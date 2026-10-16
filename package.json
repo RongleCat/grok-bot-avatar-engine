@@ -1,0 +1,51 @@
+{
+  "name": "grok-bot-avatar-engine",
+  "version": "0.1.0",
+  "description": "Independent SVG avatar engine for Grok Bot characters: agent id to shape and color, outlines, motion clips, and the main-bot star.",
+  "license": "MIT",
+  "type": "module",
+  "author": "RongleCat (铁柱AGI)",
+  "homepage": "https://ronglecat.github.io/grok-bot-avatar-engine/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RongleCat/grok-bot-avatar-engine.git"
+  },
+  "bugs": {
+    "url": "https://github.com/RongleCat/grok-bot-avatar-engine/issues"
+  },
+  "keywords": [
+    "grok",
+    "grok-bot",
+    "avatar",
+    "svg"
+  ],
+  "engines": {
+    "node": ">=22.13"
+  },
+  "exports": {
+    ".": {
+      "types": "./index.d.mts",
+      "import": "./src/index.mjs"
+    }
+  },
+  "types": "./index.d.mts",
+  "files": [
+    "src",
+    "data",
+    "index.d.mts",
+    "README.md",
+    "README_ZH.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3",
+    "vitepress": "^1.6.4"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "target": "ES2023",
+    "lib": ["ES2023", "DOM"],
+    "noEmit": true,
+    "skipLibCheck": false,
+    "verbatimModuleSyntax": true
+  },
+  "files": ["index.d.mts"]
+}
