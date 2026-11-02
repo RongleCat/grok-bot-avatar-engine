@@ -1,0 +1,2 @@
+// renderer/assets/index.eager-common-DbK3Oi_r.js  offset 191885  length 128  sha1 f37a2ebae9c4
+function da(e,t,n){let r=e!==`sphere`,i=ca[e]??1;return{rx:-(r?19:14)*i*n,ry:(r?26:18)*i*t,px:(r?.07:.03)*t,py:(r?.055:.024)*n}}

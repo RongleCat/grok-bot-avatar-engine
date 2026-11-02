@@ -1,0 +1,2 @@
+// renderer/assets/index.eager-app-D1juOWZp.js  offset 694313  length 291  sha1 15aa45881a59
+function NHe({count:e,frame:t}){if(e<=1)return[{x:0,y:0,size:t}];if(e===2){let e=t*2/3,n=t-e;return[{x:0,y:0,size:e},{x:n,y:n,size:e}]}let n=t*5/9,r=t-n;return e===3?[{x:r/2,y:0,size:n},{x:0,y:r,size:n},{x:r,y:r,size:n}]:[{x:0,y:0,size:n},{x:r,y:0,size:n},{x:0,y:r,size:n},{x:r,y:r,size:n}]}

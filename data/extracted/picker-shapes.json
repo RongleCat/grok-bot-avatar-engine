@@ -1,0 +1,36 @@
+{
+  "provenance": {
+    "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+    "offset": 171855,
+    "length": 210,
+    "kind": "data",
+    "sha1": "12e00e138185"
+  },
+  "value": [
+    "blob",
+    "pebble",
+    "bean",
+    "egg",
+    "squircle",
+    "tablet",
+    "capsule",
+    "cylinder",
+    "hex",
+    "gem",
+    "crystal",
+    "wedge",
+    "shield",
+    "dome",
+    "arch",
+    "cloud",
+    "teardrop",
+    "leaf",
+    "square",
+    "sparkle",
+    "clover",
+    "flower",
+    "heart",
+    "house",
+    "star"
+  ]
+}

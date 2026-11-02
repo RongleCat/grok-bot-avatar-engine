@@ -1,0 +1,2 @@
+// renderer/assets/index.eager-common-DbK3Oi_r.js  offset 195651  length 377  sha1 91794477cf62
+function Ra(e){let t=e.restTime,n=La(e.rotation,t),r=La(e.position,t),i=La(e.squash,t),a=La(e.zoom,t),o=La(e.lids,t),s=`neutral`,c=!1;for(let n of e.expression)c||=(s=n.name,!0),n.t<=t+1e-9&&(s=n.name);return{rot:n?[n[0],n[1],n[2]]:[0,0,0],pos:r?[r[0],r[1]]:[0,0],scl:i?[i[0],i[1]]:[1,1],zoom:a?a[0]:Ea,lids:o?Math.min(1,Math.max(0,o[0])):0,expr:s,squashAnchor:e.squashAnchor}}

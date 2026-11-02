@@ -1,0 +1,16 @@
+{
+  "provenance": {
+    "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+    "offset": 172069,
+    "length": 71,
+    "kind": "data",
+    "sha1": "6d650ed8cf5c"
+  },
+  "value": [
+    {
+      "shape": "pumpkin",
+      "pickerGate": "sand_pumpkin_2026",
+      "pickerColor": "orange"
+    }
+  ]
+}

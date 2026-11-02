@@ -1,0 +1,2 @@
+// renderer/assets/index.eager-app-D1juOWZp.js  offset 1050637  length 142  sha1 70996db60384
+function bZe(e){let t=e[0];if(t==null)return``;let n=e.length>1?e[e.length-1]:null;return(yZe(t)+(n==null?``:yZe(n))).toLocaleUpperCase(Ev())}

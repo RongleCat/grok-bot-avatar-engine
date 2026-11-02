@@ -1,0 +1,2 @@
+// renderer/assets/index.eager-common-DbK3Oi_r.js  offset 327541  length 118  sha1 3f4ba710d7cf
+function Mp(e,t){let[n,r,i]=Ur(e),a=e=>t>0?Math.round(e/t)*t:e;return{yaw:Pp(a(r*vp)),pitch:Pp(a(n*vp)),roll:a(i*vp)}}

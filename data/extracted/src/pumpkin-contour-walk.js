@@ -1,0 +1,2 @@
+// renderer/assets/index.eager-common-DbK3Oi_r.js  offset 324101  length 411  sha1 2a32d627be63
+function up(e,t){let{least:n,most:r,innerBands:i,outerBands:a}=Ef(),o=qf(e,gf);return(s,c,l)=>{let u=s*s+c*c;if(u>=Fd*Fd)return!1;let d=(W(bd(c,s)/(2*H)*J)+J)%J,f=G(t[d],t[(d+1)%J])*hf;if(u>f*f)return!1;let p=e(s,c,0);for(let e=l+uf;e<=Fd;e+=df){let t=Cd(s,c,e);if(t<n)return!0;if(t>r){if(e>=0)return!1;continue}let l=p.y+e*o.y,u=Of(l/t);if(!(t>a[u])&&(t<=i[u]||t<=kf(p.x+e*o.x,l,p.z+e*o.z)))return!0}return!1}}

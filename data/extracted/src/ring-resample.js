@@ -1,0 +1,2 @@
+// renderer/assets/index.eager-common-DbK3Oi_r.js  offset 277129  length 328  sha1 f07e97a407ab
+e=>Array.from({length:Fs},(t,n)=>{let r=n/Fs*ss,i=Math.cos(r),a=Math.sin(r),o=0;for(let t=0;t<e.length;t++){let n=e[t],r=e[(t+1)%e.length],s=n[0]-L,c=n[1]-L,l=r[0]-L,u=r[1]-L,d=(l-s)*a-(u-c)*i;if(Math.abs(d)<1e-9)continue;let f=(s*a-c*i)/-d;if(f<0||f>1)continue;let p=(s+(l-s)*f)*i+(c+(u-c)*f)*a;p>o&&(o=p)}return[L+i*o,L+a*o]})

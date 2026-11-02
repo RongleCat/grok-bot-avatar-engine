@@ -8,7 +8,7 @@
 <h1 align="center">grok-bot-avatar-engine</h1>
 
 <p align="center"><strong>Grok Bot 头像引擎</strong></p>
-<p align="center"><em>Agent id · 25 shapes · 28 motion clips · SVG · the main-bot star</em></p>
+<p align="center"><em>客户端渲染器移植 · 26 形体 · 53 状态 · 眼睛是挖空的 · 南瓜带柄</em></p>
 <p align="center"><a href="https://ronglecat.github.io/grok-bot-avatar-engine/">https://ronglecat.github.io/grok-bot-avatar-engine/</a></p>
 
 <p align="center">
@@ -21,7 +21,7 @@
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License" /></a>
   <a href="https://github.com/RongleCat/grok-bot-avatar-engine/stargazers"><img src="https://img.shields.io/github/stars/RongleCat/grok-bot-avatar-engine?style=social" alt="GitHub stars" /></a>
   <img src="https://img.shields.io/badge/node-%3E%3D22.13-339933?logo=node.js&logoColor=white" alt="Node.js" />
-  <img src="https://img.shields.io/badge/client-Grok%20Bot%200.70.2-lightgrey" alt="Grok Bot 0.70.2" />
+  <img src="https://img.shields.io/badge/client-Grok%20Bot%200.78.1-lightgrey" alt="Grok Bot 0.78.1" />
   <img src="https://img.shields.io/badge/note-unofficial-yellow" alt="Unofficial" />
 </p>
 
@@ -42,7 +42,9 @@
 ---
 
 > [!NOTE]
-> **About this engine.** grok-bot-avatar-engine draws the Grok Bot character set as SVG: the agent-id recipe, the outlines, the eye seats, the 28 motion clips, and the main-bot star. It is an independent library by [铁柱AGI](https://x.com/cgnot996). It is **not an xAI product, not a Cursor product, and not the Grok Bot app**.
+> **What this is.** grok-bot-avatar-engine is a **port of the Grok Bot client's own avatar renderer**, not a re-imagining of it. The renderer that draws the shapes, the eyes and the motion lives in `data/extracted/src/avatar-engine.js`: 600-odd declarations lifted out of the unpacked app bundle byte for byte, each one stamped with its bundle offset and sha1 by `tools/extract/closure.py`. `src/` holds readable transcriptions of the layers underneath (quaternion maths, mesh construction), and their tests run the bundle text and compare, so a transcription that drifts fails.
+>
+> It is **not an xAI product, not a Cursor product, and not the Grok Bot app** — it is someone else's code, kept here in ported form by [铁柱AGI](https://x.com/cgnot996). See [LICENSE](LICENSE) and [SECURITY.md](SECURITY.md).
 >
 > The same author builds [Grok App](https://github.com/RongleCat/grok-app), a desktop workbench for the local Grok Build CLI, and [grok-bot-sdk](https://github.com/RongleCat/grok-bot-sdk), the protocol client. Those are different programs.
 
@@ -57,40 +59,74 @@ npm install github:RongleCat/grok-bot-avatar-engine
 ```
 
 ```js
-import { resolveAvatar, renderAvatarSvg, createAvatar } from 'grok-bot-avatar-engine';
-
-const avatar = resolveAvatar('33cf1aae-3a51-452d-b761-34a6ccb62201');
-// cloud, brown
+import { renderAvatarSvg } from 'grok-bot-avatar-engine';
 
 document.querySelector('#bot').innerHTML = renderAvatarSvg({
-  agentId: avatar.agentId,
+  agentId: '33cf1aae-3a51-452d-b761-34a6ccb62201',
   state: 'working',
-  time: 1.2,
   size: 96,
-  main: true,
 });
 ```
 
-`main: true` punches the orange star into the silhouette. The disc is 16 units on a 60 viewBox, the hole is 2.7 wider than the disc, and the ratios stay put when you change `size`.
+That is the client's renderer: mesh projection, cut-out eyes, the pumpkin's ridges and stem, its motion driver. `renderAvatarSvg` and `createAvatar` are bindings over it and draw nothing themselves; `resolveAvatar`, `SHAPES`, `COLORS`, `STATES` and the rest read the client's own tables.
 
-In a browser, `createAvatar(element, options)` plays the clip with `requestAnimationFrame`. `setState('finished')` restarts the clock.
+The bindings are not a wall. `grok-bot-avatar-engine/engine` is the transplanted renderer with its bundle names intact, for anything they do not cover:
+
+```js
+import { client } from 'grok-bot-avatar-engine';
+
+const driver = client.eo({ body: 'pumpkin' });
+client.go(driver, 'working', { seed: 20261101, isCompact: false, isResting: false });
+driver.advance(1.2);
+client.hp(client.Xg(driver.frame(), client.o_('#FF6700'), 96, 'bot', { displaySize: 96, extent: '100%' }));
+```
+
+Omit `time` for the frame the client settles a resting avatar on, or pass seconds to step the driver to that moment. A shape that pins its colour keeps it: a blue pumpkin still comes out orange.
+
+In a browser, `createAvatar(element, options)` mounts the client's own component, so the frame cap, the hidden-tab skip, the off-screen pause and the pointer gaze come with it.
 
 ```sh
 node examples/preview.mjs
+node examples/showcase.mjs
 ```
 
-Open `http://127.0.0.1:4174`.
+The showcase is a file, not a server: `examples/showcase.html` opens in a browser with the engine inlined. Every pixel in it comes from `avatar-engine.js`, and the shape list, colour list, pinned-colour rule and state list are read out of the client's own tables (`ln`, `nn`, `cn`, `lo`).
 
-## What matches Grok Bot 0.70.2
+## What the port covers
 
-- The id string is hashed as UTF-16, with hyphens and case left as they are. Uppercase is a different character. Black is explicit only.
+- **Renderer.** The client's mesh pipeline runs here: `Xg` → `Dp` → `Fp`/`Rp`/`Lp` → projection (`nl`, `ol`, `rl`), the even-odd polygon union (`ru`), the pumpkin's signed-distance field (`Ff`) and its stem (`Lf`), then `kp`/`hp` emit the SVG. Eyes are cut out, never painted: the mesh path punches them with an SVG mask, the flat path splices them into the body outline.
+- **Bodies.** All 26 in the client's `ei` table, including the 25 picker shapes in `ln` and the aliases `i_` maps (blob→sphere, flower→starFlower, heart→heartChubby, star→star6).
+- **Motion.** The client's stateful driver `eo` (springs, gaze, blink, poke, morph, rest) and its clip machine `go` over the `lo` state table — 53 states. Poses are quantized to the sprite resolution exactly as the client does, which is what makes its caches hit.
+- **Identity.** `An`/`jn`/`Mn` resolve an agent id to shape and colour; `cn`/`ti` keep the pumpkin pinned to `orange` with no colour row offered.
+- **Provenance.** `data/extracted/manifest.json` records every symbol, data table and literal with bundle, offset, length and sha1. `tools/extract/closure.py` rebuilds the engine from `closure-seeds.txt`; `tools/extract/loop.py` grows that list from the ReferenceErrors the render actually hits, so nothing is guessed in.
+
+The front-view outline approximation that this package used to ship is deleted. A hard yaw is now a mesh turn, and the orange main-bot star is gone with it: `#f59312` turns out to be the `yellow/0` token in the app's theme palette, and no such star exists in the 0.78.1 renderer.
+
+## Linked avatars
+
+The character reacts to agent state through the client's own machine:
+
+```js
+import { eo, go, Xg, hp, o_ } from 'grok-bot-avatar-engine/engine';
+
+const driver = eo({ body: 'cloud' });
+const machine = go(driver, 'working', { seed: 20261101, isCompact: false, isResting: false });
+driver.advance(1 / 60);
+machine.advance(1 / 60);
+const svg = hp(Xg(driver.frame(), o_('#FF309B'), 96, 'cloud', { displaySize: 96, extent: '100%' }));
+```
+
+`setState('finished')` plays the one-pass clip and moves on; `setCompact(true)` switches to the small-slot clips; `setGaze(rect, point)` turns the head toward the pointer; `d_()` makes the whole thing settle on a still frame under prefers-reduced-motion. All of that is the client's behaviour, not a re-creation of it.
+
+The plate, ring, stack, badge and initials layer around the character is recorded in the manifest (`mark-svg`, `stack-layout`, `indicator-geometry`, `initials-*`) but is not ported yet.
+
+Details worth knowing, from the same extraction:
+
+- The id string is hashed as UTF-16, with hyphens and case left as they are; uppercase is a different character. The identity recipe did not change between 0.70.2 and 0.78.1.
 - Explicit `avatarShape` and `avatarColor` override one field at a time. A picture URL replaces the character.
-- Twenty-two outline paths match that client's outline builder, including cloud, heart, sparkle, shield, and the six-point star.
-- The eye table uses the same design fractions. Hex is the reference capsule.
-- The state list and the 28 clips are the same list, including the 120 second blocked hold and the compact idle clip under 48px.
-- The star color is `#f59312`.
-
-The desktop client then revolves, lofts, or extrudes those outlines into a mesh. This package draws the front view in SVG. A still character facing you has the same silhouette. A large yaw is a squeeze here and a mesh turn there. Blob is the circle you see from the front of the sphere. Crystal is the fourteen separate discs of the ball cluster. Flower is the six-petal union the client extrudes.
+- The client carries no eye row for sphere or pumpkin, and the port uses the same stand-in for both.
+- Clip order is the client's seeded shuffle, not the declaration order, and a one-pass state (`finished`, `failed`, `approving`) plays its clips once and then moves to its `next`.
+- The client hides the pumpkin behind the `sand_pumpkin_2026` experiment; this package resolves it for every caller.
 
 ## Docs
 
@@ -109,7 +145,7 @@ npm run docs:dev
 
 | Project | What it is |
 |---|---|
-| [grok-bot-sdk](https://github.com/RongleCat/grok-bot-sdk) | Protocol client for the Grok Bot 0.70.2 desktop API. It derives the avatar parameters and does not draw them. |
+| [grok-bot-sdk](https://github.com/RongleCat/grok-bot-sdk) | Protocol client for the Grok Bot 0.78.1 desktop API. It derives the avatar parameters and does not draw them. |
 | [Grok App](https://github.com/RongleCat/grok-app) | Open-source desktop workbench for the local Grok Build CLI. [grok-app.com](https://grok-app.com) |
 | [awesome-grok-bot](https://github.com/RongleCat/awesome-grok-bot) | Grok Bot community index |
 | [Grok Bot learning site](https://bot.tiezhu.si/) | From zero to a bot team: install, routines, cases, usage |

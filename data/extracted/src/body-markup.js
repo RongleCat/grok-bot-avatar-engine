@@ -1,0 +1,2 @@
+// renderer/assets/index.eager-platform-C2su3Zzb.js  offset 520073  length 203  sha1 4e32f5376e27
+function SM({body:e,size:t,fill:n=o,inflate:r=0,paint:i=`#000`}){return`<path d="${CM(wM(e),e,t,yM(e,n)).body}" fill="${i}"${r>0?` stroke="${i}" stroke-width="${TM(2*r)}" stroke-linejoin="round"`:``}/>`}

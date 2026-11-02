@@ -1,0 +1,2 @@
+// renderer/assets/index.eager-common-DbK3Oi_r.js  offset 328120  length 307  sha1 d2fd00ae9de3
+function Lp(e,t,n,r){let i=`${e} ${n} ${t.yaw} ${t.pitch} ${t.roll} ${JSON.stringify(r)}`,a=Tp.get(i);if(a!=null)return Tp.delete(i),Tp.set(i,a),a;let o=(e===`pumpkin`?If(Ff(t,n),t,n,Ao(r)):tl(dc(e),t,n,ko(e,r))).map(e=>nu([e]));if(Tp.set(i,o),Tp.size>xp)for(let e of Tp.keys()){Tp.delete(e);break}return o}

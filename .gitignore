@@ -3,3 +3,5 @@ docs/.vitepress/dist/
 docs/.vitepress/cache/
 *.tsbuildinfo
 .DS_Store
+.tmp-engine/
+__pycache__/

@@ -1,68 +1,73 @@
-# 接口
+# API
+
+画面里的一切都出自客户端渲染器。下面几个函数只是它的绑定，不加几何、不加配色计算、不加动作。
 
 ```js
 import {
   resolveAvatar,
   renderAvatarSvg,
   createAvatar,
-  poseAt,
-  bodyPath,
   SHAPES,
-  PALETTE,
+  BODIES,
+  COLORS,
   STATES,
+  COMPACT_SIZE,
+  bodyFor,
+  colorValue,
+  pinnedColor,
+  paintOf,
+  client,
 } from 'grok-bot-avatar-engine';
 ```
 
-## `resolveAvatar(agentId | input)`
-
-返回一个云端 agent id 对应的角色。
-
-| 字段 | 含义 |
-|---|---|
-| `algorithmVersion` | `'grok-bot-0.70.2'` |
-| `kind` | `'character'` 或 `'picture'` |
-| `shape`、`color` | 公开 id |
-| `baseHex`、`lightHex`、`darkHex` | 调色板 |
-| `sources.shape`、`sources.color` | `'explicit'` 或 `'id-default'` |
-| `picture` | `{ url, version }` 或 `null` |
-| `hash`、`shapeHash`、`shapeIndex`、`colorIndex` | 整数配方 |
-
-id 缺失时抛 `AVATAR_AGENT_ID_REQUIRED`。
-
 ## `renderAvatarSvg(options)`
 
-返回一段 SVG。常用选项：
+返回一段 `<svg>` 字符串。选项名就是客户端组件自己的 prop 名，`shape` / `color` 是 `body` / `appearance` 的可读写法。
 
 | 选项 | 默认 | 含义 |
 |---|---|---|
-| `agentId` | | 推导形状和颜色 |
-| `shape`、`color` | blob、blue | 没有 id 时使用。设置了就会覆盖 id |
-| `avatarShape`、`avatarColor`、`avatarUrl`、`avatarDataUrl`、`avatarVersion` | | 与 `resolveAvatar` 相同的字段 |
-| `theme` | `'light'` | 选择 `lightHex` 或 `darkHex` |
-| `ink` | 来自颜色 | 任意 SVG 颜色。引号会被转义 |
-| `state` | `'idle'` | `STATES` 的一个键 |
-| `time` | `0` | 秒 |
-| `size` | `120` | 像素宽高 |
-| `main` | `false` | 橙色星标和挖孔 |
-| `compact` | `size < 48` 时为 true | 闲置只用 Idle_B |
-| `reducedMotion` | `false` | 把时间固定在 0 |
-| `id` | 自动生成 | mask 和 clip 的 id。手写拼接多段 SVG 时请自己指定 |
-| `forceCharacter` | `false` | 即使有 `avatarUrl` 也画角色 |
+| `shape` | | `SHAPES` 里的名字，经 `bodyFor` 解析成渲染体 |
+| `agentId` | | 没给 `shape` 时用它推形状和颜色 |
+| `avatarShape`、`avatarColor` | | 客户端原本的覆盖字段 |
+| `color` | | `COLORS` 的 id，或任意 CSS 颜色 |
+| `state` | `'idle'` | `STATES` 的键 |
+| `time` | 静帧 | 秒。省略就取客户端落到的那一帧，给数值就把驱动推到那一刻，和播放循环一致 |
+| `size` | `96` | CSS 像素 |
+| `seed` | 用 `id` | 片段洗牌与入场相位 |
+| `id` | `avatar-<shape>` | 给 defs 加命名空间，页面上每个实例一个 |
+| `fill` | `.6` | 精灵图在画框里的占比 |
+| `resolution` | 由 `fill` 推 | 直接指定精灵尺寸 |
+| `isStatic`、`isPlaying`、`maxFrameRate` | 客户端默认 | 动效开关，`isStatic` 走静帧那条路 |
+| `isProof` | `false` | 客户端的着色网格调试视图 |
 
-形状不在目录里时抛 `AVATAR_SHAPE_UNKNOWN:<name>`。颜色不在调色板里时抛 `AVATAR_COLOR_UNKNOWN`。
+既没有形状也没有 agent id 时抛错；既没有颜色也没有 agent id 时同样抛错。锁色的形状会保住自己的颜色：给南瓜指定蓝色，出来的还是橙色。
 
 ## `createAvatar(element, options)`
 
-每一帧把 SVG 写进 `element`。返回 `{ setState(name), update(partial), destroy() }`。`setState` 会重新计时。不在浏览器里会抛 `AVATAR_DOM_REQUIRED`。
+把客户端的组件挂到 `element` 上，返回 `{ update, setState, setBody, setPlaying, setExpression, blink, look, restart, poke, gaze, destroy }`。限帧、标签页隐藏时跳过、离屏暂停、指针注视，都是这个组件自己的行为，不是照着复刻的。省略 `size` 就交给元素的盒子决定，客户端在自适应槽位里就是这么用的。
 
-## `poseAt(state, time, { compact })`
+## `resolveAvatar(agentId | input)`
 
-返回 `{ clip, face, morph, x, y, turn, yaw, scale, squashX, squashY, blink, look, eyeScaleX, eyeScaleY, tilt }`。
+走客户端带实验开关的解析器，返回 `{ shape, color }`，所以显式的 `avatarShape: 'pumpkin'` 会保留，不会被推导出的形状顶掉。图片头像不归这个函数管：应用在渲染器之上换照片，那段代码不在头像引擎里。
 
-## `bodyPath(shape)`
+## 表与辅助函数
 
-228.44 画布上拟合后的轮廓 `d`。`outlineSamples(shape)` 返回用来摆放眼睛的采样点。
+| 导出 | 客户端来源 |
+|---|---|
+| `SHAPES` | `ln`，26 个选择器名字，顺序一致 |
+| `BODIES` | `ei`，渲染器实际接受的 26 个名字 |
+| `COLORS` | `nn`，`{ id, label, value }` |
+| `STATES` | `lo` 的键 |
+| `COMPACT_SIZE` | `s_`（48），低于它改用紧凑片段 |
+| `bodyFor(shape)` | `i_`：blob 到 sphere、flower 到 starFlower、heart 到 heartChubby、star 到 star6 |
+| `colorValue(id)` | 查 `nn` |
+| `pinnedColor(shape)` | 查 `cn`；0.78.1 里只有南瓜，锁 `orange` |
+| `paintOf(ink, spot?)` | `o_`；一个参数把眼睛挖空，两个参数改为把眼睛画出来 |
 
-## 常量
+## `client`
 
-`SHAPES`、`DEFAULT_SHAPES`、`BODIES`、`FACES`、`STATES`、`PALETTE`、`DEFAULT_COLORS`、`EYE_SEATS`、`EYE_REFERENCE`、`EYE_UNIT`、`CLIP_NAMES`、`BADGE_SPEC`、`VIEWBOX`（60）、`CANVAS`（`{ center: 114.2705, target: 228.44 }`）。
+剥掉封装的移植引擎。`client.eo`、`client.go`、`client.Xg`、`client.hp`、`client.p_` 和那些表都保留 bundle 原名，`data/extracted/avatar-engine.json` 记录每一条的偏移、长度和 sha1。上面的绑定不够用时再用它；有稳定形状的那几个在 `index.d.mts` 里有类型。
+
+## 还没移植
+
+角色外面的背板、环、堆叠、状态角标和首字母，符号和偏移都记在 `data/extracted/manifest.json`（`mark-svg`、`stack-layout`、`indicator-geometry`、`initials-*`），但还没暴露出来。主 Bot 的橙色星标在 0.78.1 的渲染器里根本不存在。

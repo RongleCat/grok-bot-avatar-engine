@@ -1,0 +1,2 @@
+// renderer/assets/index.eager-app-D1juOWZp.js  offset 694904  length 207  sha1 135a1c2d41d1
+function HHe(e,t){return t!=null&&t>0?{width:VHe(t),height:IHe,anchor:`overflow`}:e===`working`?{width:LHe.width,height:LHe.height,anchor:`overflow`}:e===`offline`?{width:RHe,height:RHe,anchor:`inset`}:null}

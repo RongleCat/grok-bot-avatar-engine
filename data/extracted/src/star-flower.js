@@ -1,0 +1,2 @@
+// renderer/assets/index.eager-common-DbK3Oi_r.js  offset 286766  length 379  sha1 3e49cb05ab1e
+function Lc(){let e=.58,t=[{x:0,y:0,r:.36}];for(let n=0;n<6;n++){let r=-Math.PI/2+n*Js/6;t.push({x:e*Math.cos(r),y:e*Math.sin(r),r:.33})}let n=[];for(let e=0;e<240;e++){let r=e/240*Js,i=Math.cos(r),a=Math.sin(r),o=0,s=.9099999999999999;for(let e=0;e<22;e++){let e=(o+s)/2,n=e*i,r=e*a;t.some(e=>(n-e.x)*(n-e.x)+(r-e.y)*(r-e.y)<=e.r*e.r)?o=e:s=e}n.push({x:o*i,y:o*a,z:0})}return n}

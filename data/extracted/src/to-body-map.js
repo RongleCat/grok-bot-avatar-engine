@@ -1,0 +1,2 @@
+// renderer/assets/index.eager-common-DbK3Oi_r.js  offset 358110  length 158  sha1 38c4420ef33a
+function i_(e){switch(e){case`blob`:return`sphere`;case`flower`:return`starFlower`;case`heart`:return`heartChubby`;case`star`:return`star6`;default:return e}}

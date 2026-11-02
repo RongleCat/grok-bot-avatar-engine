@@ -1,0 +1,2 @@
+// renderer/assets/index.eager-common-DbK3Oi_r.js  offset 317051  length 401  sha1 d5d834958df6
+function Lf(e){if(e==null)return[];let t=wf.get(e);if(t!=null)return t;let n=Vf(e),r=n.nx+1,i=Rf(e,r,n.ny+1),a=Hf(n,zf(i,e=>e!==0)),o=Ed.flatMap(({fill:e,paints:t})=>{let o=zf(i,e=>t.has(e)),s=Bf(o,r,n.ny+1),c=o.slice();for(let e=0;e<c.length;e++)i[e]===0&&(c[e]|=s[e]);let l=sd(Uf(n,Hf(n,c),a),n,Dd).map(e=>e.flatMap(([e,t])=>[e,t]));return l.length>0?[{fill:e,polygons:l}]:[]});return wf.set(e,o),o}

@@ -1,50 +1,75 @@
-# Shapes and color
-
-`SHAPES` is the editor order, 25 names. `DEFAULT_SHAPES` is the 8 the id can pick. `toBody` maps the public name onto the outline id: `blob` to `sphere`, `flower` to `starFlower`, `heart` to `heartChubby`, `star` to `star6`.
+# Shapes and colour
 
 ```js
-import { SHAPES, bodyPath, PALETTE, inkFor } from 'grok-bot-avatar-engine';
+import { SHAPES, BODIES, COLORS, bodyFor, pinnedColor, colorValue } from 'grok-bot-avatar-engine';
 
-bodyPath('cloud');
-inkFor('brown', 'light'); // #A27952
-inkFor('brown', 'dark');  // #855C36
+SHAPES.length;        // 26, the picker list (ln) in the client's order
+BODIES.length;        // 26, what the renderer takes (ei)
+bodyFor('flower');    // 'starFlower'
+COLORS[3];            // { id: 'orange', label: 'Orange', value: '#FF6700' }
+pinnedColor('pumpkin'); // 'orange'
 ```
 
-`inkFor` throws `AVATAR_COLOR_UNKNOWN` for a name outside `PALETTE`. Black's light ink is `#000000` and its dark ink is `#FFFFFF`.
+Four picker names are aliases of a body: `blob` is the sphere, `flower` is
+`starFlower`, `heart` is `heartChubby`, `star` is `star6`. `bodyFor` is the
+client's own map (`i_`), not a list kept here.
 
-## How the outline is built
+## How a body is drawn
 
-Every catalog path is constructed, then fitted into a box of 228.44 centered at 114.2705. The fit shifts the bbox onto that center and scales it into `[0.9, 1.35]`. `bodyPath(shape)` returns that fitted `d`.
+The client builds each body as a solid and projects it; this package runs that
+same code. A silhouette is one of the kinds in the client's `_l` table —
+revolve, loft, extrusion, rounded slab, pill, inscribed balls, crystal, or a
+signed-distance field — and the projection turns it into the outline you see, so
+a large yaw is a mesh turn rather than a squeeze.
 
-These constructions match the Grok Bot 0.70.2 outline builder path for path:
+Two numbers shape every outline: the fit centres the contour on `L` and scales it
+to a target radius, clamped to a range. Both are read from the bundle, and their
+offsets are in `data/extracted/manifest.json` as `canvas-centre`, `fit-params`
+and `fit-apply`.
 
-| Body | Construction |
-|---|---|
-| pebble, bean, egg, leaf | Closed polar sample, smoothed to cubics |
-| squircle, gem | Superellipse |
-| square, hex, house, wedge | Rounded polygon |
-| tablet, capsule, cylinder, dome, arch | Bezier arcs |
-| shield | Four cubics |
-| cloud, clover | Union of circles |
-| teardrop | Rounded tip into a circular foot |
-| heart, sparkle, star | The shipped vector, then the same fit |
+`crystal` is a cluster of balls, so its outline is several loops that the
+client's union pass (`ru`, an even-odd merge) resolves into one path. `cloud` and
+`clover` are unions too. This is why a body can carry more than one `<path>`.
 
-`blob` is a circle of radius 108, then the same fit. The desktop client revolves a sphere. The front view is that circle.
+`pumpkin` is the one body the client does not build from a contour. It raymarches
+a superellipsoid with ridges, takes the widest surface point across tilt bands,
+and adds a separate stem mesh painted from its own two-tone table. Every constant
+in that walk is in the manifest: `pumpkin-radius`, `pumpkin-silhouette`,
+`pumpkin-contours`, `pumpkin-contour-walk`, `pumpkin-stem` and `pumpkin-paints`.
+The stem is why a pumpkin is never a single path.
 
-`crystal` is fourteen separate front-view circles, the same non-overlapping ball cluster the client meshes. A single union from the center pinches on the empty rays, so each disc stays its own subpath. `flower` is the six-petal union sampled at 240 angles. The client extrudes that petal outline. The front view is the union.
+## Eyes are cut out
 
-`bodyPath('nope')` throws `AVATAR_SHAPE_UNKNOWN:nope`.
+Nothing paints an eye. On the mesh path the emitter writes a `<mask>` — a white
+rect minus the eye shapes — and the body is drawn through it, so the page shows
+through the eyes. On the flat path the eye loops are spliced into the body
+outline as extra subpaths. Both are the client's code; the difference is which
+renderer a body goes to.
 
-![Twenty-five shapes at idle](/shapes.png)
+The eye seats come from the client's `Oo` table (`eye-seats` in the manifest),
+with `Do` as the reference capsule. That table has no row for the sphere and none
+for the pumpkin, and the client projects eye shapes onto those surfaces instead.
 
-## Eyes
+## Colour
 
-The eye table stores the 0.70.2 design fractions. Hex is the reference: width 0.26, height 0.57, gap 0.64. Every other body is scaled from that reference onto one SVG capsule (`EYE_UNIT`). Positive `shiftY` moves the pair up. Heart and wedge use a narrower capsule (`squashX` 0.6 and 0.55).
+`COLORS` is the client's `nn` table: eleven ids, one flat hex each. There is no
+light and dark variant for an avatar body — the `light-dark()` pairs in the
+bundle belong to UI ink, not to the character.
 
-Eyes are `#141414` with a small white highlight. They are not a separate pupil.
+```js
+renderAvatarSvg({ shape: 'pumpkin', color: 'blue', size: 96 }); // still orange
+```
 
-## The star
+`pinnedColor` reads the client's `cn` table. In 0.78.1 the pumpkin is the only
+entry, it pins `orange`, and it sits behind the `sand_pumpkin_2026` experiment.
+The avatar editor drops the whole colour row for a pinned shape, which is what
+`showcase.html` does too.
 
-On a 60-unit viewBox the disc has diameter 16 and its center is at `(52, 52)`, flush to the bottom right. The hole radius is `8 + 2.7`. The disc is `#f59312`, the star is white, and the hairline is `#1c1c1c` at stroke width 0.6. The body and the eyes are masked by the hole. The star is not.
+## Not here
 
-`size` only changes the SVG width and height. It does not change these ratios. Below 48, or with `compact: true`, idle uses the compact clip list. That flag does not resize the star.
+The orange main-bot star is not part of the 0.78.1 renderer. `#f59312` is the
+`yellow/0` token in the app's theme palette, and the star that older versions of
+this package drew was built from the front-view approximation, not from the
+client. It is gone with that code.
+
+![Twenty-six shapes](/shapes.png)

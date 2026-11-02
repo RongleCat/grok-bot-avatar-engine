@@ -1,0 +1,2 @@
+// renderer/assets/index.eager-common-DbK3Oi_r.js  offset 181451  length 177  sha1 3bedfeab61a8
+[[`thinking`,`sad`],[`strange`,`inspecting`],[`angry`,`neutral`],[`inspect`,`inspecting`],[`squint`,`squinted`],[`idle`,`neutral`],[`smile`,`happy`],[`sleep`,`sleepy`]

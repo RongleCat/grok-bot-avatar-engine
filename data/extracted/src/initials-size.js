@@ -1,0 +1,2 @@
+// renderer/assets/index.eager-app-D1juOWZp.js  offset 693929  length 205  sha1 2db1e25767f9
+function kHe(e,t){if(e.isPerson!==!0||e.initials==null||e.src!=null)return null;if(t<EHe){let[n=e.initials]=[...e.initials];return{initials:n,fontSizePx:t*DHe}}return{initials:e.initials,fontSizePx:t*OHe}}

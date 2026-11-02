@@ -1,0 +1,2 @@
+// renderer/assets/index.eager-common-DbK3Oi_r.js  offset 173540  length 123  sha1 364dd2f125af
+function Mn(e){return{shape:On(e.avatarShape)??fn[En(e.agentId)%fn.length]??`blob`,color:kn(e.avatarColor)??Tn(e.agentId)}}

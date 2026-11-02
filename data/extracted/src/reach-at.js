@@ -1,0 +1,2 @@
+// renderer/assets/index.eager-common-DbK3Oi_r.js  offset 332799  length 227  sha1 e11c21aec80d
+function gm(e,t){let n=e.length;if(n===0)return 0;let r=e.findIndex(e=>e.angle>=t);r<0&&(r=0);let i=e[r],a=e[(r-1+n)%n],o=(i.angle-a.angle+X)%X;if(o===0)return i.reach;let s=(t-a.angle+X)%X/o;return a.reach+(i.reach-a.reach)*s}

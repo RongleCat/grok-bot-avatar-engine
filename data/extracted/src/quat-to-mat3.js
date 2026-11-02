@@ -1,0 +1,2 @@
+// renderer/assets/index.eager-common-DbK3Oi_r.js  offset 179383  length 152  sha1 8b13209aca7f
+function Vr(e){let[t,n,r,i]=e;return[1-2*(r*r+i*i),2*(n*r-t*i),2*(n*i+t*r),2*(n*r+t*i),1-2*(n*n+i*i),2*(r*i-t*n),2*(n*i-t*r),2*(r*i+t*n),1-2*(n*n+r*r)]}

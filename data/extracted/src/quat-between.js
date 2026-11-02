@@ -1,0 +1,2 @@
+// renderer/assets/index.eager-common-DbK3Oi_r.js  offset 179259  length 124  sha1 1f2afa07d0b4
+function Br(e,t){return zr([1+(e[0]*t[0]+e[1]*t[1]+e[2]*t[2]),e[1]*t[2]-e[2]*t[1],e[2]*t[0]-e[0]*t[2],e[0]*t[1]-e[1]*t[0]])}

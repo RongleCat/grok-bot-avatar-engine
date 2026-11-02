@@ -1,0 +1,2 @@
+// renderer/assets/index.eager-common-DbK3Oi_r.js  offset 277920  length 207  sha1 837ec6e670c8
+e=>{let t=Bs(e,Ns(e)),n=Ns(t),{top:r,bottom:i,spanAt:a,outerAt:o}=Ps(n),s=0;for(let e=r;e<=i;e+=2){let[t,n]=o(e);s=Math.max(s,(n-t)/2)}return{path:t,ring:Is(n),top:R(r),bottom:R(i),spanAt:a,beltRadius:R(s)}}

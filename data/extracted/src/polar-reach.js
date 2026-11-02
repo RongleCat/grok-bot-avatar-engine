@@ -1,0 +1,2 @@
+// renderer/assets/index.eager-common-DbK3Oi_r.js  offset 330324  length 201  sha1 9fbd6d0f10ea
+function tm(e,t,n){let r=e.map(([e,n])=>({angle:mm(t,e,n),reach:Math.hypot(e-t[0],n-t[1])})).sort((e,t)=>e.angle-t.angle);return n.map(e=>{let n=gm(r,e);return[t[0]+Math.cos(e)*n,t[1]+Math.sin(e)*n]})}

@@ -1,0 +1,2 @@
+// renderer/assets/index.eager-common-DbK3Oi_r.js  offset 327830  length 127  sha1 f87bf9bfabd2
+function Fp(e,t,n,r){let i=r==null?[]:Lp(e,t,n,r);return e===`pumpkin`?{...Ip(Ff(t,n)),eyes:i}:{body:Rp(e,t,n),eyes:i,stem:[]}}

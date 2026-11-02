@@ -8,7 +8,7 @@
 <h1 align="center">grok-bot-avatar-engine</h1>
 
 <p align="center"><strong>Grok Bot 头像引擎</strong></p>
-<p align="center"><em>Agent id · 25 种形状 · 28 条动作片段 · SVG · 主 Bot 星标</em></p>
+<p align="center"><em>客户端渲染器移植 · 26 个形体 · 53 个状态 · 眼睛是挖空的 · 南瓜带柄</em></p>
 <p align="center"><a href="https://ronglecat.github.io/grok-bot-avatar-engine/zh/">https://ronglecat.github.io/grok-bot-avatar-engine/zh/</a></p>
 
 <p align="center">
@@ -21,7 +21,7 @@
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License" /></a>
   <a href="https://github.com/RongleCat/grok-bot-avatar-engine/stargazers"><img src="https://img.shields.io/github/stars/RongleCat/grok-bot-avatar-engine?style=social" alt="GitHub stars" /></a>
   <img src="https://img.shields.io/badge/node-%3E%3D22.13-339933?logo=node.js&logoColor=white" alt="Node.js" />
-  <img src="https://img.shields.io/badge/client-Grok%20Bot%200.70.2-lightgrey" alt="Grok Bot 0.70.2" />
+  <img src="https://img.shields.io/badge/client-Grok%20Bot%200.78.1-lightgrey" alt="Grok Bot 0.78.1" />
   <img src="https://img.shields.io/badge/note-unofficial-yellow" alt="非官方" />
 </p>
 
@@ -42,7 +42,9 @@
 ---
 
 > [!NOTE]
-> **关于这个引擎。** grok-bot-avatar-engine 用 SVG 画 Grok Bot 的角色：agent id 的算法、轮廓、眼位、28 条动作片段，以及主 Bot 的星标。它是 [铁柱AGI](https://x.com/cgnot996) 的独立库。**不是 xAI 的产品，不是 Cursor 的产品，也不是 Grok Bot 应用本身。**
+> **这是什么。** grok-bot-avatar-engine 是 **Grok Bot 客户端自带头像渲染器的移植**，不是照葫芦画瓢的另一套实现。画形状、眼睛和动作的那套渲染器就在 `data/extracted/src/avatar-engine.js` 里：六百多个声明，从解包后的应用 bundle 里逐字节取出，每一个都由 `tools/extract/closure.py` 打上 bundle 偏移和 sha1。`src/` 下面是它下层（四元数数学、网格构建）的可读转写，对应测试直接执行 bundle 原文做差分，转写一旦跑偏就红。
+>
+> **不是 xAI 的产品，不是 Cursor 的产品，也不是 Grok Bot 应用本身**——这是别人的代码，由 [铁柱AGI](https://x.com/cgnot996) 以移植形式保留。见 [LICENSE](LICENSE) 与 [SECURITY.md](SECURITY.md)。
 >
 > 同一位作者还做了 [Grok App](https://github.com/RongleCat/grok-app)（本机 Grok Build CLI 的桌面工作台）和 [grok-bot-sdk](https://github.com/RongleCat/grok-bot-sdk)（协议客户端）。它们是不同的程序。
 
@@ -57,40 +59,74 @@ npm install github:RongleCat/grok-bot-avatar-engine
 ```
 
 ```js
-import { resolveAvatar, renderAvatarSvg, createAvatar } from 'grok-bot-avatar-engine';
-
-const avatar = resolveAvatar('33cf1aae-3a51-452d-b761-34a6ccb62201');
-// cloud，brown
+import { renderAvatarSvg } from 'grok-bot-avatar-engine';
 
 document.querySelector('#bot').innerHTML = renderAvatarSvg({
-  agentId: avatar.agentId,
+  agentId: '33cf1aae-3a51-452d-b761-34a6ccb62201',
   state: 'working',
-  time: 1.2,
   size: 96,
-  main: true,
 });
 ```
 
-`main: true` 会把橙色星星嵌进轮廓。圆盘在 60 的 viewBox 里直径是 16，孔比圆盘再大 2.7。改 `size` 不会改这些比例。
+这就是客户端的渲染器：网格投影、挖空的眼睛、南瓜的棱和柄。`renderAvatarSvg` 和 `createAvatar` 只是它的绑定，自己一个像素都不画；`resolveAvatar`、`SHAPES`、`COLORS`、`STATES` 这些读的都是客户端自己的表。
 
-在浏览器里，`createAvatar(element, options)` 用 `requestAnimationFrame` 播放片段。`setState('finished')` 会重新计时。
+这层绑定不是墙。`grok-bot-avatar-engine/engine` 是保留 bundle 原名的移植引擎，绑定不够用时直接从那里调：
+
+```js
+import { client } from 'grok-bot-avatar-engine';
+
+const driver = client.eo({ body: 'pumpkin' });
+client.go(driver, 'working', { seed: 20261101, isCompact: false, isResting: false });
+driver.advance(1.2);
+client.hp(client.Xg(driver.frame(), client.o_('#FF6700'), 96, 'bot', { displaySize: 96, extent: '100%' }));
+```
+
+省略 `time` 就是客户端给静止头像落定的那一帧；给了秒数，就按播放循环的方式把驱动推到那一刻。锁色的形状认自己的颜色：给南瓜指定蓝色，出来的还是橙色。
+
+在浏览器里，`createAvatar(element, options)` 挂的就是客户端自己的组件，所以限帧、标签页隐藏时跳过、离屏暂停和指针注视全都自带。
 
 ```sh
 node examples/preview.mjs
+node examples/showcase.mjs
 ```
 
-打开 `http://127.0.0.1:4174`。
+展示页是一个文件，不是服务：`examples/showcase.html` 打开就能看，引擎直接内联在页面里。页面里每个像素都来自 `avatar-engine.js`，形状表、颜色表、固定色规则和状态表都从客户端自己的表里读（`ln`、`nn`、`cn`、`lo`）。
 
-## 和 Grok Bot 0.70.2 对齐的部分
+## 移植覆盖到哪
 
-- id 字符串按 UTF-16 哈希，连字符和大小写保持原样。全大写是另一个角色。黑色只能显式指定。
-- `avatarShape` 和 `avatarColor` 各自覆盖一个字段。有图片地址时改画图片。
-- 22 条轮廓路径和那个客户端的轮廓构建器一致，包括云、心、闪光、盾牌和六角星。
-- 眼表用的是同一组设计比例。六边形是基准胶囊。
-- 状态表和 28 条片段是同一份，包括 blocked 停留 120 秒，以及小于 48px 时闲置只用紧凑片段。
-- 星星的颜色是 `#f59312`。
+- **渲染器。** 客户端的网格管线在这里跑通：`Xg` → `Dp` → `Fp`/`Rp`/`Lp` → 投影（`nl`、`ol`、`rl`）、奇偶多边形并集（`ru`）、南瓜的距离场（`Ff`）和柄（`Lf`），最后 `kp`/`hp` 出 SVG。眼睛是挖出来的，不是画上去的：网格路径用 SVG mask 打孔，轮廓路径把眼睛接进外形。
+- **形体。** 客户端 `ei` 表里的 26 个全在内，包括 `ln` 的 25 个选择器形状和 `i_` 那几个别名（blob→sphere、flower→starFlower、heart→heartChubby、star→star6）。
+- **动作。** 客户端的有状态驱动 `eo`（弹簧、注视、眨眼、戳、morph、静置）和它在 `lo` 状态表上的片段机 `go`——53 个状态。姿态按精灵图分辨率量化，和客户端一致，这也是它缓存能命中的原因。
+- **身份。** `An`/`jn`/`Mn` 把 agent id 解成形状和颜色；`cn`/`ti` 让南瓜锁在 `orange`，并且不提供色板。
+- **来源。** `data/extracted/manifest.json` 记录每个符号、数据表和字面量的 bundle、偏移、长度与 sha1。`tools/extract/closure.py` 按 `closure-seeds.txt` 重建引擎；`tools/extract/loop.py` 只用渲染时真正抛出的 ReferenceError 来长这份名单，没有一条是猜的。
 
-桌面客户端随后把这些轮廓做成旋转体、放样或挤出网格。这个包画的是 SVG 正面。正对你的静止角色，剪影相同。大角度偏航在这里是压扁，在网格里是转向。blob 是球体的正面圆。crystal 是那组小球的十四个分开的圆。flower 是客户端拿去挤出的六瓣并集。
+这个包早先自带的那套正面轮廓近似已经删掉。大角度偏航现在是真正的网格转向；橙色主 Bot 星标也一起删了——`#f59312` 其实是应用主题色板里的 `yellow/0`，0.78.1 的渲染器里根本没有那颗星。
+
+## 联动的头像
+
+角色对 agent 状态的反应走客户端自己的机器：
+
+```js
+import { eo, go, Xg, hp, o_, no } from 'grok-bot-avatar-engine/engine';
+
+const driver = eo({ body: 'cloud' });
+const machine = go(driver, 'working', { seed: 20261101, isCompact: false, isResting: false });
+driver.advance(1 / 60);
+machine.advance(1 / 60);
+const svg = hp(Xg(driver.frame(), o_('#FF309B'), 96, 'cloud', { displaySize: 96, extent: '100%' }));
+```
+
+`setState('finished')` 放完一次性片段再转到 `next`；`setCompact(true)` 切到小槽位片段；`setGaze(rect, point)` 让头转向指针；`d_()` 在 prefers-reduced-motion 下按客户端那套定帧流程落回静止帧。这些都是客户端的行为，不是照着复刻的。
+
+角色外面的背板、环、堆叠、角标和首字母那一层，符号已经连同偏移记在 manifest 里（`mark-svg`、`stack-layout`、`indicator-geometry`、`initials-*`），但还没移植。
+
+以下是同一次提取里还值得记的细节：
+
+- id 字符串按 UTF-16 哈希，连字符和大小写保持原样，全大写是另一个角色。身份算法从 0.70.2 到 0.78.1 没变。
+- `avatarShape` 和 `avatarColor` 各自覆盖一个字段；有图片地址时改画图片。
+- 客户端没有球体和南瓜的眼位行，这两个都用同一个兜底。
+- 片段播放顺序是客户端的带种子洗牌，不是声明顺序；一次性状态（`finished`、`failed`、`approving`）把片段各放一遍再转到它的 `next`。
+- 客户端把南瓜收在 `sand_pumpkin_2026` 实验开关后面，这个包对所有调用方直接放开。
 
 ## 文档
 
@@ -109,7 +145,7 @@ npm run docs:dev
 
 | 项目 | 是什么 |
 |---|---|
-| [grok-bot-sdk](https://github.com/RongleCat/grok-bot-sdk) | Grok Bot 0.70.2 桌面协议的客户端。它算出头像参数，不负责画。 |
+| [grok-bot-sdk](https://github.com/RongleCat/grok-bot-sdk) | Grok Bot 0.78.1 桌面协议的客户端。它算出头像参数，不负责画。 |
 | [Grok App](https://github.com/RongleCat/grok-app) | 本机 Grok Build CLI 的开源桌面工作台。[grok-app.com](https://grok-app.com) |
 | [awesome-grok-bot](https://github.com/RongleCat/awesome-grok-bot) | Grok Bot 社区索引 |
 | [Grok Bot 学习站](https://bot.tiezhu.si/) | 从安装到组一个 bot 团队：例程、案例、用法 |

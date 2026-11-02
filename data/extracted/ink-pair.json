@@ -1,0 +1,55 @@
+{
+  "provenance": {
+    "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+    "offset": 177234,
+    "length": 430,
+    "kind": "data",
+    "sha1": "889b46c40d64"
+  },
+  "value": {
+    "black": {
+      "light": "#000000",
+      "dark": "#FFFFFF"
+    },
+    "brown": {
+      "light": "#A27952",
+      "dark": "#855C36"
+    },
+    "red": {
+      "light": "#FF3E51",
+      "dark": "#E02135"
+    },
+    "orange": {
+      "light": "#FF781C",
+      "dark": "#FF6700"
+    },
+    "yellow": {
+      "light": "#FFAF38",
+      "dark": "#FF9800"
+    },
+    "green": {
+      "light": "#00C972",
+      "dark": "#009957"
+    },
+    "cyan": {
+      "light": "#1CC3B0",
+      "dark": "#00A592"
+    },
+    "blue": {
+      "light": "#2A92FE",
+      "dark": "#0E74E0"
+    },
+    "violet": {
+      "light": "#A97EFE",
+      "dark": "#804EE0"
+    },
+    "magenta": {
+      "light": "#FF5EB1",
+      "dark": "#E02A88"
+    },
+    "gray": {
+      "light": "#959595",
+      "dark": "#777777"
+    }
+  }
+}

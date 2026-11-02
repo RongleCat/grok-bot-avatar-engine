@@ -1,0 +1,2 @@
+// renderer/assets/index.eager-common-DbK3Oi_r.js  offset 277811  length 105  sha1 8cfcba107ba2
+(e,t)=>{let{k:n,dx:r,dy:i}=zs(t);return Math.abs(n-1)<.005&&Math.abs(r)<.5&&Math.abs(i)<.5?e:Ls(e,n,r,i)}

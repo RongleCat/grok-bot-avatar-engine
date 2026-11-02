@@ -3,8 +3,8 @@ layout: home
 
 hero:
   name: Grok Bot Avatar Engine
-  text: The character, from an agent id
-  tagline: Shape, color, outline, motion clips, and the main-bot star. Drawn as SVG. Matched to the Grok Bot 0.70.2 character set. Unofficial.
+  text: The client's renderer, running outside the client
+  tagline: 26 bodies, cut-out eyes, 53 motion states, the pumpkin with its stem. Ported from the Grok Bot 0.78.1 app, byte for byte. Unofficial.
   actions:
     - theme: brand
       text: Start
@@ -17,14 +17,14 @@ hero:
       link: /zh/
 
 features:
-  - title: One id, one character
-    details: The agent UUID picks one of eight shapes and one of ten colors. Explicit shape and color still win, each on its own. A picture URL replaces the character.
-  - title: The same outlines
-    details: Twenty-two catalog paths follow the 0.70.2 outline builder, including cloud, heart, sparkle, and the six-point star. Blob, crystal, and flower are the front view of the solids the desktop client meshes. Crystal stays fourteen separate discs.
-  - title: The same clips
-    details: Twenty-eight clips drive idle, working, streaming, done, and the rest of the state list. Below 48px, idle stays on the compact clip.
-  - title: One star
-    details: The main bot keeps a 16/60 orange disc, a 2.7 cutout, and a white star. The hole stays in the same place at every size.
+  - title: Not a re-creation
+    details: The renderer is the app's own declarations, lifted out of the bundle untouched with an offset and sha1 per symbol. `renderAvatarSvg` and `createAvatar` bind it; they draw nothing themselves.
+  - title: Real mesh silhouettes
+    details: Revolve, loft, extrude, ball cluster, or a raymarched signed-distance field, then projected. A hard yaw is a turn, not a squeeze. Crystal is a union, so is cloud.
+  - title: Eyes are holes
+    details: Nothing paints an eye. The mesh path punches it through an SVG mask, the flat path splices it into the outline, and the page shows through either way.
+  - title: The whole state table
+    details: The client's stateful driver and clip machine: 53 states over 28 clips, seeded shuffle, blinks, pointer gaze, and poses quantized the way the app quantizes them.
 ---
 
 ## Community

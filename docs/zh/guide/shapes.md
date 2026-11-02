@@ -1,50 +1,45 @@
 # 形状和颜色
 
-`SHAPES` 是编辑器顺序，共 25 个名字。`DEFAULT_SHAPES` 是 id 能抽到的 8 个。`toBody` 把公开名字映射到轮廓 id：`blob` 到 `sphere`，`flower` 到 `starFlower`，`heart` 到 `heartChubby`，`star` 到 `star6`。
-
 ```js
-import { SHAPES, bodyPath, PALETTE, inkFor } from 'grok-bot-avatar-engine';
+import { SHAPES, BODIES, COLORS, bodyFor, pinnedColor, colorValue } from 'grok-bot-avatar-engine';
 
-bodyPath('cloud');
-inkFor('brown', 'light'); // #A27952
-inkFor('brown', 'dark');  // #855C36
+SHAPES.length;        // 26, the picker list (ln) in the client's order
+BODIES.length;        // 26, what the renderer takes (ei)
+bodyFor('flower');    // 'starFlower'
+COLORS[3];            // { id: 'orange', label: 'Orange', value: '#FF6700' }
+pinnedColor('pumpkin'); // 'orange'
 ```
 
-`inkFor` 遇到 `PALETTE` 以外的名字会抛 `AVATAR_COLOR_UNKNOWN`。黑色在浅色主题下是 `#000000`，在深色主题下是 `#FFFFFF`。
+四个选择器名字是某个身体的别名：`blob` 是球体，`flower` 是 `starFlower`，`heart` 是 `heartChubby`，`star` 是 `star6`。`bodyFor` 用的就是客户端自己的那张映射（`i_`），不是这里另存的一份名单。
 
-## 轮廓怎么来的
+## 身体是怎么画的
 
-每条目录路径先按公式画出，再拟合进以 114.2705 为中心、边长 228.44 的盒子。拟合把包围盒中心挪到这个点，再把缩放夹在 `[0.9, 1.35]`。`bodyPath(shape)` 返回拟合后的 `d`。
+客户端把每个身体建成一个实体再投影，这个包跑的就是同一段代码。一个轮廓是客户端 `_l` 表里的某一种构造——旋转、放样、挤出、圆角板、胶囊、内切小球、晶体，或者一个距离场——投影把它变成你看到的那条轮廓，所以大角度偏航是网格转向，不是压扁。
 
-这些构造和 Grok Bot 0.70.2 的轮廓构建器路径对路径一致：
+有两个数决定每条轮廓：拟合把轮廓的中心对到 `L`，再按目标半径缩放，并把倍数夹在一个区间里。两个数都从 bundle 里读，它们的偏移记在 `data/extracted/manifest.json` 的 `canvas-centre`、`fit-params` 和 `fit-apply` 里。
 
-| 身体 | 构造 |
-|---|---|
-| pebble、bean、egg、leaf | 极坐标闭合采样，再平滑成三次曲线 |
-| squircle、gem | 超椭圆 |
-| square、hex、house、wedge | 圆角多边形 |
-| tablet、capsule、cylinder、dome、arch | 贝塞尔圆弧 |
-| shield | 四段三次曲线 |
-| cloud、clover | 圆的并集 |
-| teardrop | 圆角尖头接到圆弧底部 |
-| heart、sparkle、star | 自带矢量，再做同一次拟合 |
+`crystal` 是一簇小球，所以它的轮廓是好几条环，由客户端的并集流程（`ru`，一次奇偶合并）收成一条带多个子路径的 `<path>`。`cloud` 和 `clover` 同样是并集。身体始终只有一条 `<path>`；输出里多出来的那几条，是 mask 携带的眼睛，外加南瓜的柄。
 
-`blob` 是半径 108 的圆，再做同一次拟合。桌面客户端画的是旋转球体，正面就是这个圆。
+`pumpkin` 是唯一一个客户端不从轮廓建出来的身体。它步进一个带棱的超椭球距离场，在若干倾斜带里取最宽的表面点，再加一套独立的柄网格，用它自己的双色表上色。这条路径上的每个常量都在 manifest 里：`pumpkin-radius`、`pumpkin-silhouette`、`pumpkin-contours`、`pumpkin-contour-walk`、`pumpkin-stem` 和 `pumpkin-paints`。南瓜从来不是一条路径，就是因为那根梗。
 
-`crystal` 是 14 个分开的正面圆，和客户端网格里那组互不重叠的小球是同一套位置。从中心做并集会在空射线处捏到一点，所以每颗圆各自是一条子路径。`flower` 是六瓣并集，按 240 个角度采样。客户端把这朵花的轮廓挤出，正面就是这个并集。
+## 眼睛是挖出来的
 
-`bodyPath('nope')` 抛出 `AVATAR_SHAPE_UNKNOWN:nope`。
+没有任何一笔在画眼睛。网格那条路，发射器写一个 `<mask>`——白底矩形减去眼睛形状——身体透过它绘制，于是页面从眼睛里透出来。平面那条路，眼睛的环作为额外的子路径接进身体轮廓。两条都是客户端的代码，区别只是这个身体走哪个渲染器。
 
-![二十五种形状的闲置帧](/shapes.png)
+眼位取自客户端的 `Oo` 表（manifest 里的 `eye-seats`），基准胶囊是 `Do`。这张表没有球体那一行，也没有南瓜那一行，客户端对这两个改为把眼睛形状投到那些曲面上。
 
-## 眼睛
+## 颜色
 
-眼表保存的是 0.70.2 的设计比例。六边形是基准：宽 0.26，高 0.57，间距 0.64。其他身体都按这个基准缩放到同一枚 SVG 胶囊（`EYE_UNIT`）。`shiftY` 为正时，眼睛上移。心形和楔形的胶囊更窄（`squashX` 分别是 0.6 和 0.55）。
+`COLORS` 就是客户端的 `nn` 表：十一个 id，每项一个平面十六进制色。头像身体没有浅色和深色两套——bundle 里那些 `light-dark()` 成对的是界面墨色，不是角色的。
 
-眼睛是 `#141414`，带一小块白色高光。没有单独的瞳孔。
+```js
+renderAvatarSvg({ shape: 'pumpkin', color: 'blue', size: 96 }); // still orange
+```
 
-## 星标
+`pinnedColor` 读客户端的 `cn` 表。0.78.1 里南瓜是唯一一项，它锁 `orange`，并且挂在 `sand_pumpkin_2026` 实验开关后面。头像编辑器遇到锁色的形状会把整行颜色去掉，`showcase.html` 也照这个做。
 
-在 60 单位的 viewBox 里，圆盘直径 16，圆心在 `(52, 52)`，贴住右下角。孔的半径是 `8 + 2.7`。圆盘是 `#f59312`，星星是白色，发丝描边是 `#1c1c1c`，线宽 0.6。身体和眼睛被这个孔裁掉。星星本身不被裁。
+## 不在这里
 
-`size` 只改 SVG 的宽高，不改这些比例。小于 48，或传入 `compact: true` 时，闲置只用紧凑片段。这个开关不改变星星的大小。
+橙色主 Bot 星标不是 0.78.1 渲染器的一部分。`#f59312` 是应用主题色板里的 `yellow/0` 令牌，而这个包早先版本画的那颗星是从正面视角近似长出来的，不是客户端的。它随那段代码一起没了。
+
+![二十六种形状](/shapes.png)

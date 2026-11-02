@@ -1,0 +1,2 @@
+// renderer/assets/index.eager-common-DbK3Oi_r.js  offset 327957  length 163  sha1 0f5812903fd5
+function Ip(e){let t=Ep.get(e);if(t!=null)return t;let n={body:[nu([e.body])],stem:Lf(e.stem).map(({fill:e,polygons:t})=>({d:nu(t),fill:e}))};return Ep.set(e,n),n}

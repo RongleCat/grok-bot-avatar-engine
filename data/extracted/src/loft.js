@@ -1,0 +1,2 @@
+// renderer/assets/index.eager-common-DbK3Oi_r.js  offset 287145  length 434  sha1 bf0c4a7827b4
+function Rc(e,t){let n=e.length/ic,r=n>1?Array.from({length:ic},(t,r)=>e[Math.floor(r*n)]):e,i=1/0,a=-1/0,o=1/0,s=-1/0;for(let e of r)i=Math.min(i,e.x),a=Math.max(a,e.x),o=Math.min(o,e.y),s=Math.max(s,e.y);let c={x:(i+a)/2,y:(o+s)/2},l=[];for(let e=0;e<=rc;e++){let n=-Math.PI/2+Math.PI*e/rc,i=Math.max(0,Math.cos(n))**+nc,a=t*Math.sin(n);l.push(r.map(e=>({x:c.x+(e.x-c.x)*i,y:c.y+(e.y-c.y)*i,z:a})))}return{rings:l,center:c,depth:t}}

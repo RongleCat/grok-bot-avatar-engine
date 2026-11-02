@@ -1,0 +1,2 @@
+// renderer/assets/index.eager-common-DbK3Oi_r.js  offset 177796  length 121  sha1 7c77713c902f
+(e,t,n,r)=>{e.v+=(-2*n*t*e.v-t*t*(e.x-e.t))*r,e.x+=e.v*r,(!Number.isFinite(e.x)||!Number.isFinite(e.v))&&(e.x=e.t,e.v=0)}

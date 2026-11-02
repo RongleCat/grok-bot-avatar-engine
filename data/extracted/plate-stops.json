@@ -1,0 +1,77 @@
+{
+  "provenance": {
+    "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+    "offset": 176186,
+    "length": 903,
+    "kind": "data",
+    "sha1": "17682e44f529"
+  },
+  "value": {
+    "black": {
+      "lightFrom": "#585858",
+      "lightTo": "#000000",
+      "darkFrom": "#FFFFFF",
+      "darkTo": "#C2C2C2"
+    },
+    "brown": {
+      "lightFrom": "#AE8968",
+      "lightTo": "#855C36",
+      "darkFrom": "#A27952",
+      "darkTo": "#604227"
+    },
+    "red": {
+      "lightFrom": "#FF5667",
+      "lightTo": "#E02135",
+      "darkFrom": "#FF3E51",
+      "darkTo": "#A21826"
+    },
+    "orange": {
+      "lightFrom": "#FF8838",
+      "lightTo": "#E05B00",
+      "darkFrom": "#FF781C",
+      "darkTo": "#C24E00"
+    },
+    "yellow": {
+      "lightFrom": "#FFAF38",
+      "lightTo": "#E08600",
+      "darkFrom": "#FFA31C",
+      "darkTo": "#C27400"
+    },
+    "green": {
+      "lightFrom": "#1CCF82",
+      "lightTo": "#009957",
+      "darkFrom": "#00C972",
+      "darkTo": "#008048"
+    },
+    "cyan": {
+      "lightFrom": "#58D3C5",
+      "lightTo": "#00A592",
+      "darkFrom": "#1CC3B0",
+      "darkTo": "#007769"
+    },
+    "blue": {
+      "lightFrom": "#459FFE",
+      "lightTo": "#0E74E0",
+      "darkFrom": "#2A92FE",
+      "darkTo": "#0C64C1"
+    },
+    "violet": {
+      "lightFrom": "#B792FE",
+      "lightTo": "#804EE0",
+      "darkFrom": "#9159FE",
+      "darkTo": "#5C39A1"
+    },
+    "magenta": {
+      "lightFrom": "#FF77BE",
+      "lightTo": "#E02A88",
+      "darkFrom": "#FF47A6",
+      "darkTo": "#A21E62"
+    },
+    "gray": {
+      "lightFrom": "#A6A6A6",
+      "lightTo": "#696969",
+      "darkFrom": "#B7B7B7",
+      "darkTo": "#777777"
+    }
+  }
+}

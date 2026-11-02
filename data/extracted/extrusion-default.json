@@ -1,0 +1,14 @@
+{
+  "provenance": {
+    "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+    "offset": 295581,
+    "length": 42,
+    "kind": "data",
+    "sha1": "24cb3455c813"
+  },
+  "value": {
+    "kind": "extrusion",
+    "halfDepth": 0.36,
+    "bevel": 0.22
+  }
+}

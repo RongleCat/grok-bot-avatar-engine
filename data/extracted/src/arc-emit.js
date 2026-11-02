@@ -1,0 +1,2 @@
+// renderer/assets/index.eager-common-DbK3Oi_r.js  offset 342430  length 272  sha1 fe54d487706a
+function _h(e,t,n,r){if(t.sweep===0)return``;if(Math.abs(t.sweep)>$m){let i=t.sweep/2,a=wm(t.radii,Math.atan2(e[1],e[0])+i);return _h(e,{...t,to:a,sweep:i},n,r)+_h(a,{...t,sweep:i},n,r)}return`A${`${Oh(t.radii[0]*r)} ${Oh(t.radii[1]*r)}`} 0 0 ${t.sweep>0?0:1} ${n(t.to)}`}

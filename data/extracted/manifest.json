@@ -1,0 +1,1118 @@
+{
+  "bundleVersion": "0.78.1",
+  "entries": {
+    "all-shapes": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 33,
+      "offset": 172156,
+      "sha1": "ec2c6a792fa5"
+    },
+    "angle-basis": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 51,
+      "offset": 315548,
+      "sha1": "54b95a3f77a1"
+    },
+    "angle-step": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 82,
+      "offset": 327659,
+      "sha1": "8b16f9c81add"
+    },
+    "arc-emit": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 272,
+      "offset": 342430,
+      "sha1": "fe54d487706a"
+    },
+    "arc-split-max": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 12,
+      "offset": 339517,
+      "sha1": "12eec852e942"
+    },
+    "arc-winds": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 128,
+      "offset": 337060,
+      "sha1": "874f12cd66bf"
+    },
+    "avatar-engine": {
+      "appVersion": "0.78.1",
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "count": 618,
+      "kind": "closure",
+      "sha1": "6136bacb08ac"
+    },
+    "ball-grid": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "scalar",
+      "length": 2,
+      "offset": 278944,
+      "sha1": "af3e133428b9"
+    },
+    "blink-dur": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "scalar",
+      "length": 3,
+      "offset": 178161,
+      "sha1": "c61b12ced394"
+    },
+    "blink-triplet": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 93,
+      "offset": 194565,
+      "sha1": "193e34266c0e"
+    },
+    "bodies": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 191,
+      "offset": 181126,
+      "sha1": "ba2cc1438787"
+    },
+    "body-alias": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 152,
+      "offset": 193942,
+      "sha1": "6820cf3d3bff"
+    },
+    "body-fill": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 44,
+      "offset": 202785,
+      "sha1": "6ea1350c2af2"
+    },
+    "body-markup": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-platform-C2su3Zzb.js",
+      "kind": "code",
+      "length": 203,
+      "offset": 520073,
+      "sha1": "4e32f5376e27"
+    },
+    "body-path": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-platform-C2su3Zzb.js",
+      "kind": "code",
+      "length": 251,
+      "offset": 520276,
+      "sha1": "92b5e8a3ae54"
+    },
+    "body-recipes": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 2082,
+      "offset": 278991,
+      "sha1": "e6f21eb2bcca"
+    },
+    "bridge-arcs": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 392,
+      "offset": 336668,
+      "sha1": "5ed2ed6e8402"
+    },
+    "bridge-ease": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "scalar",
+      "length": 11,
+      "offset": 194098,
+      "sha1": "efc38304a57c"
+    },
+    "bridge-recipe": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 337,
+      "offset": 196428,
+      "sha1": "02b0731eb120"
+    },
+    "canvas-centre": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "scalar",
+      "length": 8,
+      "offset": 255266,
+      "sha1": "67a2db809c2b"
+    },
+    "close-blink": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "scalar",
+      "length": 4,
+      "offset": 178179,
+      "sha1": "4a492a2f1d86"
+    },
+    "close-full": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "scalar",
+      "length": 7,
+      "offset": 178168,
+      "sha1": "d52015888f3a"
+    },
+    "color-table": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "data",
+      "length": 471,
+      "offset": 170572,
+      "sha1": "0bdc0ca0ebd4"
+    },
+    "compact-threshold": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 2,
+      "offset": 358410,
+      "sha1": "64e095fe763f"
+    },
+    "contour-extent": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 582,
+      "offset": 283693,
+      "sha1": "5e074588846c"
+    },
+    "contour-with-holes": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 419,
+      "offset": 334316,
+      "sha1": "c9cf7264da4e"
+    },
+    "crystal-balls": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 388,
+      "offset": 283305,
+      "sha1": "9a5141d26b3e"
+    },
+    "default-color": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 41,
+      "offset": 173042,
+      "sha1": "2632dc8691ab"
+    },
+    "default-ease": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "scalar",
+      "length": 13,
+      "offset": 178112,
+      "sha1": "500a277fc7e6"
+    },
+    "default-shape": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 50,
+      "offset": 173198,
+      "sha1": "437c402d16c8"
+    },
+    "deg-per-rad": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "scalar",
+      "length": 11,
+      "offset": 325039,
+      "sha1": "24e842f8a18d"
+    },
+    "dom-node": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 54,
+      "offset": 324631,
+      "sha1": "39bc23ae6231"
+    },
+    "ellipse-arcs": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 124,
+      "offset": 334735,
+      "sha1": "15e75b7054a8"
+    },
+    "ellipse-point": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 112,
+      "offset": 334859,
+      "sha1": "673b050a9005"
+    },
+    "euler-snap": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 118,
+      "offset": 327541,
+      "sha1": "3f4ba710d7cf"
+    },
+    "expression-aliases": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 177,
+      "offset": 181451,
+      "sha1": "3bedfeab61a8"
+    },
+    "extrusion-default": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "data",
+      "length": 42,
+      "offset": 295581,
+      "sha1": "24cb3455c813"
+    },
+    "eye-asymmetry": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 311,
+      "offset": 188783,
+      "sha1": "527d6798ce95"
+    },
+    "eye-payload": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 307,
+      "offset": 328120,
+      "sha1": "d2fd00ae9de3"
+    },
+    "eye-reference": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "data",
+      "length": 49,
+      "offset": 248554,
+      "sha1": "e2f5686aeefa"
+    },
+    "eye-seats": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "data",
+      "length": 1918,
+      "offset": 248607,
+      "sha1": "16488057bf6a"
+    },
+    "face-morph-dur": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "scalar",
+      "length": 3,
+      "offset": 178147,
+      "sha1": "2208cba53f9c"
+    },
+    "faces": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "data",
+      "length": 88,
+      "offset": 181346,
+      "sha1": "2f5e32861b7b"
+    },
+    "fill-clamp": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-platform-C2su3Zzb.js",
+      "kind": "code",
+      "length": 233,
+      "offset": 519328,
+      "sha1": "3194d5634d73"
+    },
+    "fit-and-ring": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 207,
+      "offset": 277920,
+      "sha1": "837ec6e670c8"
+    },
+    "fit-apply": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 105,
+      "offset": 277811,
+      "sha1": "8cfcba107ba2"
+    },
+    "fit-params": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 198,
+      "offset": 277609,
+      "sha1": "a7ab503a3844"
+    },
+    "fit-rewrite": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 134,
+      "offset": 277461,
+      "sha1": "568e1013c4d5"
+    },
+    "flat-shape-pool": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "data",
+      "length": 70,
+      "offset": 172208,
+      "sha1": "73daaa35799c"
+    },
+    "gated-shapes": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "data",
+      "length": 71,
+      "offset": 172069,
+      "sha1": "6d650ed8cf5c"
+    },
+    "gaze-delta": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 128,
+      "offset": 191885,
+      "sha1": "f37a2ebae9c4"
+    },
+    "gaze-kinds": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "scalar",
+      "length": 26,
+      "offset": 191817,
+      "sha1": "ba02219e5eb3"
+    },
+    "gaze-presets": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "data",
+      "length": 159,
+      "offset": 196772,
+      "sha1": "ada28d4a4cec"
+    },
+    "hash-id": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 115,
+      "offset": 172595,
+      "sha1": "7c11d2892f52"
+    },
+    "held-faces": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 55,
+      "offset": 181632,
+      "sha1": "5a03efa9d598"
+    },
+    "indicator-box": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-app-D1juOWZp.js",
+      "kind": "code",
+      "length": 207,
+      "offset": 694904,
+      "sha1": "135a1c2d41d1"
+    },
+    "indicator-geometry": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-app-D1juOWZp.js",
+      "kind": "code",
+      "length": 261,
+      "offset": 695111,
+      "sha1": "2219ab65270b"
+    },
+    "initials-pick": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-app-D1juOWZp.js",
+      "kind": "code",
+      "length": 142,
+      "offset": 1050637,
+      "sha1": "70996db60384"
+    },
+    "initials-size": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-app-D1juOWZp.js",
+      "kind": "code",
+      "length": 205,
+      "offset": 693929,
+      "sha1": "2db1e25767f9"
+    },
+    "initials-words": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-app-D1juOWZp.js",
+      "kind": "code",
+      "length": 178,
+      "offset": 1050779,
+      "sha1": "cd74d3ca17d4"
+    },
+    "ink-contrast": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-app-D1juOWZp.js",
+      "kind": "code",
+      "length": 86,
+      "offset": 688373,
+      "sha1": "18e20891f0ec"
+    },
+    "ink-on-surface": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-app-D1juOWZp.js",
+      "kind": "code",
+      "length": 159,
+      "offset": 692458,
+      "sha1": "b5b218417769"
+    },
+    "ink-pair": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "data",
+      "length": 430,
+      "offset": 177234,
+      "sha1": "889b46c40d64"
+    },
+    "inscribed-balls": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 633,
+      "offset": 285672,
+      "sha1": "ee658ff7e291"
+    },
+    "lid-machine": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 1815,
+      "offset": 189302,
+      "sha1": "469d544226b4"
+    },
+    "lid-morph-dur": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "scalar",
+      "length": 3,
+      "offset": 178154,
+      "sha1": "12e78869e070"
+    },
+    "load-recipe": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 591,
+      "offset": 194801,
+      "sha1": "d5a55d26e13a"
+    },
+    "loft": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 434,
+      "offset": 287145,
+      "sha1": "bf0c4a7827b4"
+    },
+    "loft-power": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "scalar",
+      "length": 3,
+      "offset": 278950,
+      "sha1": "aae648e21c9e"
+    },
+    "loft-resample": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "scalar",
+      "length": 3,
+      "offset": 278963,
+      "sha1": "be057d4ca44c"
+    },
+    "loft-rings": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "scalar",
+      "length": 2,
+      "offset": 278957,
+      "sha1": "1574bddb75c7"
+    },
+    "loop-path": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 91,
+      "offset": 331656,
+      "sha1": "03a5e44f63f3"
+    },
+    "mark-svg": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-app-D1juOWZp.js",
+      "kind": "code",
+      "length": 533,
+      "offset": 692892,
+      "sha1": "9250612e2c60"
+    },
+    "mat3-apply": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 115,
+      "offset": 179842,
+      "sha1": "a854a3dbdf5a"
+    },
+    "mat3-to-euler": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 199,
+      "offset": 179611,
+      "sha1": "03067f68c695"
+    },
+    "mesh-shape-pool": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "data",
+      "length": 110,
+      "offset": 172282,
+      "sha1": "f4e45914981c"
+    },
+    "morph-durations": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "scalar",
+      "length": 25,
+      "offset": 192469,
+      "sha1": "472ac6a5fbec"
+    },
+    "morph-ease": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "scalar",
+      "length": 14,
+      "offset": 178129,
+      "sha1": "211937b1c49a"
+    },
+    "morph-overlays": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "data",
+      "length": 227,
+      "offset": 192171,
+      "sha1": "22eb9666ad23"
+    },
+    "morph-retrigger": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 32,
+      "offset": 192433,
+      "sha1": "4f164584cd8d"
+    },
+    "morph-system": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 1016,
+      "offset": 192683,
+      "sha1": "64d7d8401cb7"
+    },
+    "morph-window": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 95,
+      "offset": 178568,
+      "sha1": "fd2edb18129a"
+    },
+    "outline-cache": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 90,
+      "offset": 278678,
+      "sha1": "b536fc2f25fd"
+    },
+    "paint-mode": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 120,
+      "offset": 358283,
+      "sha1": "ee590b7744a6"
+    },
+    "picker-color": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-app-D1juOWZp.js",
+      "kind": "code",
+      "length": 65,
+      "offset": 226311,
+      "sha1": "be82e0b2ffba"
+    },
+    "picker-shapes": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "data",
+      "length": 210,
+      "offset": 171855,
+      "sha1": "12e00e138185"
+    },
+    "pinned-bodies": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 20,
+      "offset": 181322,
+      "sha1": "e596c553ccee"
+    },
+    "pitch-clamp": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 89,
+      "offset": 327741,
+      "sha1": "7bc3c65d16c3"
+    },
+    "plate-stops": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "data",
+      "length": 903,
+      "offset": 176186,
+      "sha1": "17682e44f529"
+    },
+    "poke-names": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 23,
+      "offset": 191124,
+      "sha1": "f9ff61d1dc2f"
+    },
+    "polar-reach": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 201,
+      "offset": 330324,
+      "sha1": "9fbd6d0f10ea"
+    },
+    "poly-path": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 146,
+      "offset": 301819,
+      "sha1": "e45f070d702b"
+    },
+    "poly-round": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 52,
+      "offset": 305739,
+      "sha1": "70eb5238a2cd"
+    },
+    "polygon-path": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 146,
+      "offset": 301819,
+      "sha1": "e45f070d702b"
+    },
+    "polyline-path": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 91,
+      "offset": 331656,
+      "sha1": "03a5e44f63f3"
+    },
+    "prng": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 148,
+      "offset": 192502,
+      "sha1": "1b9f619c64cc"
+    },
+    "pumpkin-contour-walk": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 411,
+      "offset": 324101,
+      "sha1": "2a32d627be63"
+    },
+    "pumpkin-contours": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 401,
+      "offset": 317051,
+      "sha1": "d5d834958df6"
+    },
+    "pumpkin-lookup": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 232,
+      "offset": 315316,
+      "sha1": "afd4f51fe6e6"
+    },
+    "pumpkin-paints": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "scalar",
+      "length": 77,
+      "offset": 313600,
+      "sha1": "cf5ed8bf8992"
+    },
+    "pumpkin-payload": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 163,
+      "offset": 327957,
+      "sha1": "0f5812903fd5"
+    },
+    "pumpkin-radius": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 313,
+      "offset": 314281,
+      "sha1": "8af943db0df7"
+    },
+    "pumpkin-silhouette": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 533,
+      "offset": 316121,
+      "sha1": "f64591a88cf1"
+    },
+    "pumpkin-stem": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 954,
+      "offset": 321675,
+      "sha1": "4e7c7875c89c"
+    },
+    "pumpkin-table": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 610,
+      "offset": 314594,
+      "sha1": "8240eed5f259"
+    },
+    "pumpkin-trace": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "scalar",
+      "length": 21,
+      "offset": 313681,
+      "sha1": "32ba7dee9f10"
+    },
+    "quat-axis": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 80,
+      "offset": 179087,
+      "sha1": "9923c9180885"
+    },
+    "quat-between": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 124,
+      "offset": 179259,
+      "sha1": "1f2afa07d0b4"
+    },
+    "quat-from-euler": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 76,
+      "offset": 179535,
+      "sha1": "d273bc874814"
+    },
+    "quat-mul": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 185,
+      "offset": 178902,
+      "sha1": "8a0f162806e8"
+    },
+    "quat-normalise": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 92,
+      "offset": 179167,
+      "sha1": "1250eaf5387b"
+    },
+    "quat-to-euler": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 32,
+      "offset": 179810,
+      "sha1": "b4368b11c3f6"
+    },
+    "quat-to-mat3": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 152,
+      "offset": 179383,
+      "sha1": "8b13209aca7f"
+    },
+    "reach-at": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 227,
+      "offset": 332799,
+      "sha1": "e11c21aec80d"
+    },
+    "render-payload": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 127,
+      "offset": 327830,
+      "sha1": "f87bf9bfabd2"
+    },
+    "reopen-overshoot": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 136,
+      "offset": 178663,
+      "sha1": "c8142bdbcc71"
+    },
+    "reopen-peak": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "scalar",
+      "length": 4,
+      "offset": 178187,
+      "sha1": "9ba2a61ba1a0"
+    },
+    "resolve-character": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 101,
+      "offset": 173358,
+      "sha1": "bb84a5bd63d5"
+    },
+    "resolve-gated": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 81,
+      "offset": 173459,
+      "sha1": "824417c749c4"
+    },
+    "resolve-ink": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-app-D1juOWZp.js",
+      "kind": "code",
+      "length": 118,
+      "offset": 692617,
+      "sha1": "80006bfc5dab"
+    },
+    "resolve-mesh": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 123,
+      "offset": 173540,
+      "sha1": "364dd2f125af"
+    },
+    "rest-pose": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 377,
+      "offset": 195651,
+      "sha1": "91794477cf62"
+    },
+    "reverse-arc": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 182,
+      "offset": 336486,
+      "sha1": "15bb8035db8e"
+    },
+    "revolve": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 723,
+      "offset": 284306,
+      "sha1": "d372bc104b1d"
+    },
+    "revolve-radial": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "scalar",
+      "length": 2,
+      "offset": 278932,
+      "sha1": "c66c65175fec"
+    },
+    "rgb-hex": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 135,
+      "offset": 202650,
+      "sha1": "a69448df2366"
+    },
+    "ring-points": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 117,
+      "offset": 285029,
+      "sha1": "9c8258c6b1fc"
+    },
+    "ring-resample": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 328,
+      "offset": 277129,
+      "sha1": "f07e97a407ab"
+    },
+    "round-2dp-str": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 52,
+      "offset": 345174,
+      "sha1": "5f7dbb75dc7c"
+    },
+    "sample-path": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 923,
+      "offset": 275453,
+      "sha1": "b66e6fa8d5ef"
+    },
+    "sample-step": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 25,
+      "offset": 278774,
+      "sha1": "359f6167e967"
+    },
+    "scan-epsilon": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "scalar",
+      "length": 4,
+      "offset": 278983,
+      "sha1": "7e8570e181b2"
+    },
+    "scanlines": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 739,
+      "offset": 276380,
+      "sha1": "a69c260994cf"
+    },
+    "segment-path": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 136,
+      "offset": 342294,
+      "sha1": "5da58d678666"
+    },
+    "shape-body": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 368,
+      "offset": 328427,
+      "sha1": "b116db95109a"
+    },
+    "shape-hash": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 115,
+      "offset": 173083,
+      "sha1": "13aee58954be"
+    },
+    "shuffle-order": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 143,
+      "offset": 247309,
+      "sha1": "e2d4a60e7248"
+    },
+    "silhouette-kinds": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 571,
+      "offset": 295627,
+      "sha1": "05101f723e89"
+    },
+    "slots-overlap": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-app-D1juOWZp.js",
+      "kind": "code",
+      "length": 137,
+      "offset": 694672,
+      "sha1": "f9a3aa54b974"
+    },
+    "spot-fill": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 46,
+      "offset": 202829,
+      "sha1": "b57c69ee8de5"
+    },
+    "spring": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 121,
+      "offset": 177796,
+      "sha1": "7c77713c902f"
+    },
+    "spring-substeps": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 30,
+      "offset": 177930,
+      "sha1": "a1ee08be244d"
+    },
+    "stack-cut": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-app-D1juOWZp.js",
+      "kind": "code",
+      "length": 68,
+      "offset": 694604,
+      "sha1": "d532ceac9d29"
+    },
+    "stack-layout": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-app-D1juOWZp.js",
+      "kind": "code",
+      "length": 291,
+      "offset": 694313,
+      "sha1": "15aa45881a59"
+    },
+    "star-flower": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 379,
+      "offset": 286766,
+      "sha1": "3e49cb05ab1e"
+    },
+    "state-driver": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 953,
+      "offset": 247529,
+      "sha1": "6379677dae77"
+    },
+    "state-table": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 2140,
+      "offset": 245021,
+      "sha1": "da6b50588fd8"
+    },
+    "still-svg": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-platform-C2su3Zzb.js",
+      "kind": "code",
+      "length": 441,
+      "offset": 519561,
+      "sha1": "55261ec220b3"
+    },
+    "stitch-loops": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 308,
+      "offset": 337188,
+      "sha1": "dd88a36f5503"
+    },
+    "substep": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "scalar",
+      "length": 5,
+      "offset": 177921,
+      "sha1": "c3f2825a666e"
+    },
+    "tau-body": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "scalar",
+      "length": 9,
+      "offset": 278891,
+      "sha1": "14756083938a"
+    },
+    "tau-path": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "scalar",
+      "length": 9,
+      "offset": 264046,
+      "sha1": "14756083938a"
+    },
+    "to-body": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 174,
+      "offset": 315912,
+      "sha1": "738edd0b2e08"
+    },
+    "to-body-map": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 158,
+      "offset": 358110,
+      "sha1": "38c4420ef33a"
+    },
+    "to-view": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 174,
+      "offset": 315738,
+      "sha1": "3cb75132b897"
+    },
+    "unread-width": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-app-D1juOWZp.js",
+      "kind": "code",
+      "length": 41,
+      "offset": 694863,
+      "sha1": "392c3e1cee1c"
+    },
+    "view-body-transform": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 139,
+      "offset": 315599,
+      "sha1": "07f694329702"
+    },
+    "wrap-tau": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "code",
+      "length": 60,
+      "offset": 337621,
+      "sha1": "6c90cf939ef1"
+    },
+    "zoom-rest": {
+      "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+      "kind": "scalar",
+      "length": 2,
+      "offset": 194113,
+      "sha1": "e383dbb3a486"
+    }
+  }
+}

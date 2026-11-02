@@ -1,0 +1,2 @@
+// renderer/assets/index.eager-common-DbK3Oi_r.js  offset 334316  length 419  sha1 c9cf7264da4e
+function Sm(e,t){let n=t=>t.kind===`arc`&&t.radii[0]===e[0]&&t.radii[1]===e[1],r=[],i=[],a=[],o=[];for(let e of t){let t=e.findIndex(n);if(t<0){r.push(e);continue}let s=e[t].to,c=[],l=s;for(let r=1;r<=e.length;r++){let u=e[(t+r)%e.length];n(u)?(a.push({from:l,sweep:u.sweep}),o.push(l,u.to),c.length>0&&i.push(Am(s,c)),c=[],s=u.to):c.push(u),l=u.to}}return a.length===0?[Cm(e,1),...r]:[...Nm([...i,...jm(e,a,o)]),...r]}

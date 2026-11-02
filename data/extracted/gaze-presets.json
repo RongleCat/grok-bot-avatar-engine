@@ -1,0 +1,66 @@
+{
+  "provenance": {
+    "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+    "offset": 196772,
+    "length": 159,
+    "kind": "data",
+    "sha1": "ada28d4a4cec"
+  },
+  "value": {
+    "left": {
+      "rot": [
+        0,
+        -20,
+        0
+      ],
+      "pos": [
+        -0.1,
+        0
+      ]
+    },
+    "right": {
+      "rot": [
+        0,
+        20,
+        0
+      ],
+      "pos": [
+        0.1,
+        0
+      ]
+    },
+    "up": {
+      "rot": [
+        -20,
+        0,
+        0
+      ],
+      "pos": [
+        0,
+        0.1
+      ]
+    },
+    "down": {
+      "rot": [
+        20,
+        0,
+        0
+      ],
+      "pos": [
+        0,
+        -0.1
+      ]
+    },
+    "center": {
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "pos": [
+        0,
+        0
+      ]
+    }
+  }
+}

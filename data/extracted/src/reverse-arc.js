@@ -1,0 +1,2 @@
+// renderer/assets/index.eager-common-DbK3Oi_r.js  offset 336486  length 182  sha1 15bb8035db8e
+function Am(e,t){let n=[e,...t.map(e=>e.to)],r=t.map((e,t)=>e.kind===`line`?{kind:`line`,to:n[t]}:{...e,to:n[t],sweep:-e.sweep}).reverse();return{from:n[n.length-1],to:e,segments:r}}

@@ -1,0 +1,2 @@
+// renderer/assets/index.eager-common-DbK3Oi_r.js  offset 328427  length 368  sha1 b116db95109a
+function Rp(e,t,n){let r=dc(e),i=r.silhouette.kind===`solid`?r.silhouette.yawPeriod:null,{pitch:a,roll:o}=t,s=i==null?t.yaw:t.yaw-i*Math.floor(t.yaw/i),c=`${e} ${n} ${s} ${a} ${o}`,l=Cp.get(c);if(l!=null)return Cp.delete(c),Cp.set(c,l),l;let u=Bp(el(r,{yaw:s,pitch:a,roll:o},n));Cp.set(c,u),wp+=zp(u);for(let[e,t]of Cp){if(wp<=yp)break;Cp.delete(e),wp-=zp(t)}return u}

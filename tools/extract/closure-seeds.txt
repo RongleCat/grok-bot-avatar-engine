@@ -1,0 +1,80 @@
+# Top-level bundle symbols the engine is built from. Everything they reference
+# is followed automatically; a name listed here is also re-exported.
+Xg   # svg(state, paint, size, id, options) -> dom tree
+Yg   # the string wrapper around Xg
+Hg   # multi-body / morph compositing
+Dp   # mesh render payload
+kp   # payload -> svg dom
+hp   # svg dom -> string
+Fp   # body + eyes + stem paths
+Ip   # pumpkin payload
+Lp   # eye payload
+Rp   # shape body payload
+el   # rotate + project a silhouette
+$c   # silhouette -> loops
+ol   # silhouette projector
+nl   # projection context
+ru   # polygon union
+Ff   # pumpkin field
+If   # pumpkin eyes
+Lf   # pumpkin stem polygons
+tl   # mesh eyes
+dc   # shape recipe cache
+lh   # flat outline renderer (sphere)
+ph   # flat renderer -> payload
+eo   # the stateful avatar driver: frame(), seek(), advance(), setBody(), load()
+go   # state clip machine on top of eo
+o_   # paint record (ink, spot, cutout, inkPaint, spotPaint)
+no   # resolution factor
+fa   # pointer -> gaze
+u_   # id hash
+wa   # picker name -> canonical body (blob to sphere, star to star6, ...)
+cc
+ja
+Aa
+ln
+sn
+cn
+ei
+nn
+An
+jn
+Mn
+Tn
+Dn
+En
+bn
+wu
+sn
+cn
+dn
+fn
+ln
+nn
+ti
+lo
+ni
+ai
+oi
+i_
+d_
+_n
+wn
+On
+kn
+mn
+f_
+c_
+l_
+s_
+p_
+e_
+n_
+t_
+r_
+Zg
+Qg
+$g
+dp
+fp
+pp

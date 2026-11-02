@@ -1,0 +1,2 @@
+// renderer/assets/index.eager-app-D1juOWZp.js  offset 692458  length 159  sha1 b5b218417769
+function SHe(e,t){Li(/^#[0-9a-f]{6}$/i.test(t),`Grok Bot ink needs an opaque #rrggbb surface`);let n=Mx(e,`light`),r=Mx(e,`dark`);return aHe(r,t)>aHe(n,t)?r:n}

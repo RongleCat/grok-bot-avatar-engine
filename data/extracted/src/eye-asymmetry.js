@@ -1,0 +1,2 @@
+// renderer/assets/index.eager-common-DbK3Oi_r.js  offset 188783  length 311  sha1 527d6798ce95
+function Gi(e,t,n,r){if(t<.001)return e;let i=n.isFollowingTurn?Math.min(1,Math.max(-1,r/Ei)):n.bias,[a,o]=gi.inspecting,s=Math.max(1e-4,a.wid),c=Math.max(1e-4,o.wid),l=(1+i)/2,u=(e,n)=>{let r=1+(n-1)*t;return{...xi(e),wid:e.wid*r,pts:e.pts.map(e=>[e[0]*r,e[1]*r])}};return[u(e[0],(c/s)**+l),u(e[1],(s/c)**+l)]}

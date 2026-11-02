@@ -1,68 +1,92 @@
 # API
 
+Everything visual comes out of the client renderer. The functions below are
+bindings over it; they add no geometry, no colour maths and no motion.
+
 ```js
 import {
   resolveAvatar,
   renderAvatarSvg,
   createAvatar,
-  poseAt,
-  bodyPath,
   SHAPES,
-  PALETTE,
+  BODIES,
+  COLORS,
   STATES,
+  COMPACT_SIZE,
+  bodyFor,
+  colorValue,
+  pinnedColor,
+  paintOf,
+  client,
 } from 'grok-bot-avatar-engine';
 ```
 
-## `resolveAvatar(agentId | input)`
-
-Returns the character for a cloud agent id.
-
-| Field | Meaning |
-|---|---|
-| `algorithmVersion` | `'grok-bot-0.70.2'` |
-| `kind` | `'character'` or `'picture'` |
-| `shape`, `color` | Public ids |
-| `baseHex`, `lightHex`, `darkHex` | Palette entry |
-| `sources.shape`, `sources.color` | `'explicit'` or `'id-default'` |
-| `picture` | `{ url, version }` or `null` |
-| `hash`, `shapeHash`, `shapeIndex`, `colorIndex` | The integer recipe |
-
-Throws `AVATAR_AGENT_ID_REQUIRED` when the id is missing.
-
 ## `renderAvatarSvg(options)`
 
-Returns one SVG string. Useful options:
+Returns one `<svg>` string. Options are the client component's own prop names,
+with `shape` / `color` as the readable spelling of `body` / `appearance`.
 
 | Option | Default | Meaning |
 |---|---|---|
-| `agentId` | | Derive shape and color |
-| `shape`, `color` | blob, blue | Used when there is no id. Override an id when set |
-| `avatarShape`, `avatarColor`, `avatarUrl`, `avatarDataUrl`, `avatarVersion` | | Same fields as `resolveAvatar` |
-| `theme` | `'light'` | Picks `lightHex` or `darkHex` |
-| `ink` | from the color | Any SVG color. Quotes are escaped |
+| `shape` | | A name from `SHAPES`. Alias-resolved through `bodyFor` |
+| `agentId` | | Derives shape and colour when `shape` is absent |
+| `avatarShape`, `avatarColor` | | The client's own override fields |
+| `color` | | A `COLORS` id, or any CSS colour |
 | `state` | `'idle'` | A key of `STATES` |
-| `time` | `0` | Seconds |
-| `size` | `120` | Pixel width and height |
-| `main` | `false` | Orange star and cutout |
-| `compact` | `true` when `size < 48` | Idle uses Idle_B only |
-| `reducedMotion` | `false` | Forces time 0 |
-| `id` | generated | Mask and clip ids. Set it when you compose several SVGs by hand |
-| `forceCharacter` | `false` | Draw the character even if `avatarUrl` is set |
+| `time` | still frame | Seconds. Omit for the frame the client settles on, give a number to step the driver to that moment |
+| `size` | `96` | CSS pixels |
+| `seed` | the `id` | Clip shuffle and entry phase |
+| `id` | `avatar-<shape>` | Namespaces the emitted defs. One per element on the page |
+| `fill` | `.6` | Sprite coverage inside the box |
+| `resolution` | from `fill` | Overrides the sprite size directly |
+| `isStatic`, `isPlaying`, `maxFrameRate` | client defaults | Motion switches; `isStatic` takes the still path |
+| `isProof` | `false` | The client's shaded-mesh debug view |
+| `appearance` | built from the colour | The paint record, when `paintOf` is not enough |
 
-Throws `AVATAR_SHAPE_UNKNOWN:<name>` for a shape outside the catalog, and `AVATAR_COLOR_UNKNOWN` for a color outside the palette.
+Throws when neither a shape nor an agent id is given, and when neither a colour
+nor an agent id is given. A shape that pins its colour keeps it: asking for a
+blue pumpkin gets orange.
 
 ## `createAvatar(element, options)`
 
-Writes the SVG into `element` on each animation frame. Returns `{ setState(name), update(partial), destroy() }`. `setState` restarts the clock. Throws `AVATAR_DOM_REQUIRED` outside a browser.
+Mounts the client's own component into `element` and returns
+`{ update, setState, setBody, setPlaying, setExpression, blink, look, restart, poke, gaze, destroy }`.
+The frame cap, the `document.hidden` skip, the off-screen pause and the pointer
+gaze are the component's behaviour, not a re-creation of it. Omit `size` to let
+the element's box drive it, which is what the client does in a responsive slot.
 
-## `poseAt(state, time, { compact })`
+## `resolveAvatar(agentId | input)`
 
-Returns `{ clip, face, morph, x, y, turn, yaw, scale, squashX, squashY, blink, look, eyeScaleX, eyeScaleY, tilt }`.
+Returns `{ shape, color }` from the client's gated resolver, so an explicit
+`avatarShape: 'pumpkin'` survives instead of falling back to the derived shape.
+Picture URLs are not this function's business: the app swaps in a photo above
+the renderer, in code that is not part of the avatar engine.
 
-## `bodyPath(shape)`
+## Tables and helpers
 
-The fitted outline `d` in the 228.44 canvas. `outlineSamples(shape)` returns the sampled points used to place the eyes.
+| Export | Client source |
+|---|---|
+| `SHAPES` | `ln`, the 26 picker names in order |
+| `BODIES` | `ei`, the 26 names the renderer takes |
+| `COLORS` | `nn`, `{ id, label, value }` |
+| `STATES` | keys of `lo` |
+| `COMPACT_SIZE` | `s_` (48), under which the compact clips take over |
+| `bodyFor(shape)` | `i_`: blob to sphere, flower to starFlower, heart to heartChubby, star to star6 |
+| `colorValue(id)` | `nn` lookup |
+| `pinnedColor(shape)` | `cn`; in 0.78.1 only the pumpkin, which pins `orange` |
+| `paintOf(ink, spot?)` | `o_`; one argument cuts the eyes out, two paints them |
 
-## Constants
+## `client`
 
-`SHAPES`, `DEFAULT_SHAPES`, `BODIES`, `FACES`, `STATES`, `PALETTE`, `DEFAULT_COLORS`, `EYE_SEATS`, `EYE_REFERENCE`, `EYE_UNIT`, `CLIP_NAMES`, `BADGE_SPEC`, `VIEWBOX` (60), `CANVAS` (`{ center: 114.2705, target: 228.44 }`).
+The transplanted renderer, undressed. `client.eo`, `client.go`, `client.Xg`,
+`client.hp`, `client.p_` and the tables keep their bundle names, and
+`data/extracted/avatar-engine.json` maps each one to its offset, length and
+sha1 in the app. Reach for it when the bindings above do not cover what you
+need; the types in `index.d.mts` describe the parts with a stable shape.
+
+## Not ported
+
+The plate, ring, stack, status badge and initials that sit around the character
+are recorded with their offsets in `data/extracted/manifest.json`
+(`mark-svg`, `stack-layout`, `indicator-geometry`, `initials-*`) and are not
+exposed yet. The orange main-bot star is not in the 0.78.1 renderer at all.

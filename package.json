@@ -1,7 +1,7 @@
 {
   "name": "grok-bot-avatar-engine",
   "version": "0.1.0",
-  "description": "Independent SVG avatar engine for Grok Bot characters: agent id to shape and color, outlines, motion clips, and the main-bot star.",
+  "description": "Port of the Grok Bot client's avatar renderer: 3D-projected mesh bodies, cut-out eyes, motion states and the pumpkin, lifted verbatim from the shipped app.",
   "license": "MIT",
   "type": "module",
   "author": "RongleCat (铁柱AGI)",
@@ -26,7 +26,8 @@
     ".": {
       "types": "./index.d.mts",
       "import": "./src/index.mjs"
-    }
+    },
+    "./engine": "./data/extracted/src/avatar-engine.js"
   },
   "types": "./index.d.mts",
   "files": [
@@ -42,7 +43,10 @@
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "docs:preview": "vitepress preview docs",
+    "engine:extract": "python3 tools/extract/run.py && python3 tools/extract/closure.py",
+    "engine:build": "python3 tools/extract/loop.py",
+    "showcase": "node examples/showcase.mjs"
   },
   "devDependencies": {
     "typescript": "^5.9.3",

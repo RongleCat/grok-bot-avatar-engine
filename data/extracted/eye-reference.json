@@ -1,0 +1,18 @@
+{
+  "provenance": {
+    "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+    "offset": 248554,
+    "length": 49,
+    "kind": "data",
+    "sha1": "e2f5686aeefa"
+  },
+  "value": {
+    "on": false,
+    "oval": false,
+    "width": 0,
+    "height": 0,
+    "tilt": 0,
+    "cx": 0,
+    "cy": 0
+  }
+}

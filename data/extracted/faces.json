@@ -1,0 +1,20 @@
+{
+  "provenance": {
+    "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+    "offset": 181346,
+    "length": 88,
+    "kind": "data",
+    "sha1": "2f5e32861b7b"
+  },
+  "value": [
+    "neutral",
+    "happy",
+    "surprised",
+    "sad",
+    "sleepy",
+    "squinted",
+    "calm",
+    "inspecting",
+    "confused"
+  ]
+}

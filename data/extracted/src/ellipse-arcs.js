@@ -1,0 +1,2 @@
+// renderer/assets/index.eager-common-DbK3Oi_r.js  offset 334735  length 124  sha1 15e75b7054a8
+function Cm(e,t){return[{kind:`arc`,to:[-e[0],0],radii:e,sweep:t*Math.PI},{kind:`arc`,to:[e[0],0],radii:e,sweep:t*Math.PI}]}

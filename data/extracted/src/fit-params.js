@@ -1,0 +1,2 @@
+// renderer/assets/index.eager-common-DbK3Oi_r.js  offset 277609  length 198  sha1 a7ab503a3844
+e=>{let t=1/0,n=-1/0,r=1/0,i=-1/0;for(let a of e)a[0]<t&&(t=a[0]),a[0]>n&&(n=a[0]),a[1]<r&&(r=a[1]),a[1]>i&&(i=a[1]);let a=L-(t+n)/2,o=L-(r+i)/2;return{k:cs(Rs/Math.max(n-t,i-r),.9,1.35),dx:a,dy:o}}

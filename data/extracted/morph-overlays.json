@@ -1,0 +1,24 @@
+{
+  "provenance": {
+    "bundle": "app.asar!dist/renderer/assets/index.eager-common-DbK3Oi_r.js",
+    "offset": 192171,
+    "length": 227,
+    "kind": "data",
+    "sha1": "22eb9666ad23"
+  },
+  "value": {
+    "thinking": "dots",
+    "orbit": "orbit",
+    "radar": "radar",
+    "progress": "progress",
+    "spawning": "gather",
+    "dictating": "wave",
+    "sending": "send",
+    "receiving": "receive",
+    "uploading": "dock",
+    "bouncing": "ball",
+    "writing": "pencil",
+    "alerting": "bang",
+    "powering-down": "standby"
+  }
+}

@@ -1,0 +1,2 @@
+// renderer/assets/index.eager-platform-C2su3Zzb.js  offset 519328  length 233  sha1 3194d5634d73
+function yM(e,t=o){let n=`${e}:${t}`,r=vM.get(n);if(r!==void 0)return r;let i=_M*s(t),a=i/2,c=0;for(let t of p(wM(e),e,i).body)for(let[e,n]of t)c=Math.max(c,Math.abs(e-a),Math.abs(n-a));let l=_M/2,u=c<=l?t:t*l/c;return vM.set(n,u),u}

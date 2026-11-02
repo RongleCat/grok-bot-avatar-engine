@@ -1,0 +1,2 @@
+// renderer/assets/index.eager-common-DbK3Oi_r.js  offset 336668  length 392  sha1 5ed2ed6e8402
+function jm(e,t,n){let r=n.map(e=>({point:e,angle:Im(Math.atan2(e[1],e[0]))})).sort((e,t)=>e.angle-t.angle),i=[];for(let n=0;n<r.length;n++){let a=r[n],o=r[(n+1)%r.length],s=n+1<r.length?o.angle-a.angle:o.angle+2*Math.PI-a.angle;if(s<=0)continue;let c=a.angle+s/2;t.reduce((e,t)=>e+Mm(t,c),0)===0&&i.push({from:a.point,to:o.point,segments:[{kind:`arc`,to:o.point,radii:e,sweep:s}]})}return i}

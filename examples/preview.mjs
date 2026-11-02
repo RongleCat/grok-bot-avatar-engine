@@ -30,7 +30,7 @@ const page = `<!doctype html>
 <header>
   <div>
     <h1>Grok Bot Avatar Engine</h1>
-    <p>Same agent id, 25 shapes, 28 clips. Pick a state and watch the row.</p>
+    <p>The client renderer, transplanted: 26 bodies, every state in its clip table. Pick a state and watch the row.</p>
   </div>
   <label>State <select id="state"></select></label>
 </header>
@@ -38,7 +38,7 @@ const page = `<!doctype html>
 <script type="module">
   import { SHAPES, STATES, createAvatar, renderAvatarSvg } from './src/index.mjs';
   const state = document.querySelector('#state');
-  for (const name of Object.keys(STATES)) {
+  for (const name of STATES) {
     const option = document.createElement('option');
     option.value = name;
     option.textContent = name;

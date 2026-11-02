@@ -1,0 +1,2 @@
+// renderer/assets/index.eager-app-D1juOWZp.js  offset 692617  length 118  sha1 80006bfc5dab
+function CHe(e,t){return t===void 0?{light:Mx(e,`light`),dark:Mx(e,`dark`)}:{light:SHe(e,t.light),dark:SHe(e,t.dark)}}

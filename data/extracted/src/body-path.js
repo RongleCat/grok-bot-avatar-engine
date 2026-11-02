@@ -1,0 +1,2 @@
+// renderer/assets/index.eager-platform-C2su3Zzb.js  offset 520276  length 251  sha1 92b5e8a3ae54
+function CM(e,n,r,i=o){let a=r*s(i),c=(a-r)/2,l=p(e,n,a),u=e=>f(e.map(([e,t])=>[e-c,t-c]));return{body:l.body.map(u).join(``),eyes:l.eyes.map(u),ink:t(l).map(u).join(``),painted:(l.painted??[]).map(({fill:e,loops:t})=>({d:t.map(u).join(``),fill:e}))}}

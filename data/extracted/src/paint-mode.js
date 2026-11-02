@@ -1,0 +1,2 @@
+// renderer/assets/index.eager-common-DbK3Oi_r.js  offset 358283  length 120  sha1 ee590b7744a6
+function o_(e,t){return t==null?{ink:a_,spot:a_,cutout:!0,inkPaint:e}:{ink:a_,spot:a_,cutout:!1,inkPaint:e,spotPaint:t}}

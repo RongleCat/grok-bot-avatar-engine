@@ -1,0 +1,2 @@
+// renderer/assets/index.eager-common-DbK3Oi_r.js  offset 193942  length 152  sha1 6820cf3d3bff
+[[`blob`,`sphere`],[`sphereWide`,`sphere`],[`arch`,`horseshoe`],[`spark`,`sparkle`],[`star`,`star6`],[`heart`,`heartChubby`],[`hexagon`,`hex`]

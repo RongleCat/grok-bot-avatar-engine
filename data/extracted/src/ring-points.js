@@ -1,0 +1,2 @@
+// renderer/assets/index.eager-common-DbK3Oi_r.js  offset 285029  length 117  sha1 9c8258c6b1fc
+function Ac(e,t){let n=[];for(let r=0;r<$s;r++){let i=r/$s*Js;n.push({x:t*Math.sin(i),y:e,z:t*Math.cos(i)})}return n}

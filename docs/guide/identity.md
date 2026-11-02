@@ -1,34 +1,54 @@
 # Agent id
 
-Pass the cloud agent id exactly as the string you stored. Do not strip hyphens, trim, or change case. `33cf1aae-…` and `33CF1AAE-…` are two different characters. A numeric id is hashed as that digit string, not as an integer.
+Pass the cloud agent id exactly as the string you stored. Do not strip hyphens,
+trim, or change case. `33cf1aae-…` and `33CF1AAE-…` are two different characters,
+because the hash walks UTF-16 code units. A numeric id is hashed as that digit
+string, not as an integer.
 
 ```js
 import { resolveAvatar } from 'grok-bot-avatar-engine';
 
-const avatar = resolveAvatar('33cf1aae-3a51-452d-b761-34a6ccb62201');
-// shape cloud, color brown, kind character
+resolveAvatar('agent_01');            // { shape: 'blob', color: 'yellow' }
+resolveAvatar({ agentId: 'x', avatarShape: 'pumpkin' }); // pumpkin survives
 ```
 
-The recipe is `grok-bot-0.70.2`:
+`resolveAvatar` is the client's own `jn`: derive both fields from the id, then
+let an explicit `avatarShape` or `avatarColor` replace just its own field. It is
+`jn` and not `An` because `An` only accepts the 25 ordinary picker names, so an
+explicit pumpkin — a gated shape — would silently fall back to the derived one.
 
-1. FNV-1a 32-bit over the UTF-16 code units, with `Math.imul`.
-2. A second mix of that hash picks the shape: `shapeHash % 8` into `blob`, `pebble`, `squircle`, `tablet`, `wedge`, `hex`, `cloud`, `teardrop`.
-3. One Mulberry32 sample picks the color: `floor(random * 10)` into brown, red, orange, yellow, green, cyan, blue, violet, magenta, gray. Black is explicit only.
+## What the derivation reads
 
-Empty strings throw `AVATAR_KEY_REQUIRED` from `hashBotId` and `AVATAR_AGENT_ID_REQUIRED` from `resolveAvatar`.
+| Field | Client symbol | Pool it indexes |
+|---|---|---|
+| shape | `Dn` | `dn`, the eight flat-list names: blob, pebble, squircle, tablet, wedge, hex, cloud, teardrop |
+| colour | `Tn` | `_n`, ten names: brown, red, orange, yellow, green, cyan, blue, violet, magenta, gray |
+| mesh shape | `Mn` | `fn`, the thirteen the 3D client picks from: blob, cloud, square, sparkle, clover, heart, flower, teardrop, tablet, wedge, house, star, hex |
 
-## Overrides
+Both start from the same FNV-1a over those code units — `2166136261` seeded,
+`16777619` mixed, `Math.imul`, unsigned right shift, which is `bn` (and its twin
+`u_`) — and then each path mixes again before it indexes: `En` for the shape, and
+`xn`/`Cn` for the colour, where `Cn` draws one Mulberry32 sample and floors it
+into `_n.length`. So the two fields are independent draws of one hash, not one
+number read two ways. **Black is in `COLORS` but not in `_n`**, and `Cn` is bounded
+to that pool: an id can never come out black, only an explicit
+`avatarColor: 'black'` can.
 
-Shape and color override on their own. An unknown shape or unknown color is ignored and the id wins that field.
+A bot whose row in the sidebar was drawn from the flat list and whose 3D character
+came from the mesh pool can disagree with itself. That is the client's behaviour,
+not a bug to reconcile. `resolveAvatar` gives the flat answer; `client.Mn` gives
+the mesh one.
 
-```js
-resolveAvatar({
-  agentId: '33cf1aae-3a51-452d-b761-34a6ccb62201',
-  avatarShape: 'hex',
-  avatarColor: 'black',
-});
-```
+## Neither pool contains pumpkin
 
-A non-empty `avatarUrl` or `avatarDataUrl`, or a non-empty `avatarVersion`, sets `kind` to `picture`. `renderAvatarSvg` draws the URL when there is one. `avatarVersion` alone does not invent a URL. Pass `forceCharacter: true` to keep the character beside a URL.
+`cn` records it with `pickerGate: 'sand_pumpkin_2026'`, and the app only reaches
+it when the flag is on and the shape was set by hand. This package has no flag:
+`resolveAvatar({ agentId, avatarShape: 'pumpkin' })` works for any caller, and
+`renderAvatarSvg` keeps the pinned orange whatever colour was asked for.
 
-`renderAvatarSvg({ shape: 'hex', color: 'green' })` skips the id and draws that character. The default without an id is a blue blob, which is only a demo default.
+## Picture URLs are not here
+
+The app swaps in a photo above the renderer: `avatarUrl`, `avatarDataUrl` and
+`avatarPhoto` are handled in its own bundle, and none of them reach the avatar
+engine. This package takes a shape and a colour and returns an SVG. If you store
+a picture, decide that yourself before calling.

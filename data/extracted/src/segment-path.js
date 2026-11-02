@@ -1,0 +1,2 @@
+// renderer/assets/index.eager-common-DbK3Oi_r.js  offset 342294  length 136  sha1 5da58d678666
+function gh(e,t,n){let r=e[e.length-1].to,i=`M${t(r)}`;for(let a of e)i+=a.kind===`line`?`L${t(a.to)}`:_h(r,a,t,n),r=a.to;return`${i}Z`}

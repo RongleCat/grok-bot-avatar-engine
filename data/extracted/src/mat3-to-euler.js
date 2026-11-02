@@ -1,0 +1,2 @@
+// renderer/assets/index.eager-common-DbK3Oi_r.js  offset 179611  length 199  sha1 03067f68c695
+function Ur(e){let t=e[0],n=e[3],r=e[5],i=e[4],a=e[6],o=e[7],s=e[8],c=Math.max(-1,Math.min(1,-a)),l=Math.asin(c);return Math.abs(c)>.999999?[Math.atan2(-r,i),l,0]:[Math.atan2(o,s),l,Math.atan2(n,t)]}

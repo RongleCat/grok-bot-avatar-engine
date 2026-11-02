@@ -1,0 +1,2 @@
+// renderer/assets/index.eager-app-D1juOWZp.js  offset 695111  length 261  sha1 2219ab65270b
+function UHe({frame:e,indicator:t,unreadCount:n}){let r=HHe(t,n);if(r==null)return null;let i=Rx(e),a=r.width*i,o=r.height*i,s=r.anchor===`overflow`?zHe*i:-(BHe*i);return{hole:{x:e+s-a,y:e+s-o,width:a,height:o},right:-s,bottom:-s,width:r.width,height:r.height}}

@@ -1,0 +1,2 @@
+// renderer/assets/index.eager-app-D1juOWZp.js  offset 694672  length 137  sha1 f9a3aa54b974
+function FHe({a:e,b:t,gap:n}){let r=e.x+e.size/2-(t.x+t.size/2),i=e.y+e.size/2-(t.y+t.size/2);return Math.hypot(r,i)<e.size/2+t.size/2+n}

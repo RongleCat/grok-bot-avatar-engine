@@ -8,7 +8,7 @@ The package is published from GitHub. It is not on the npm registry.
 npm install github:RongleCat/grok-bot-avatar-engine
 ```
 
-Draw one still frame:
+Draw one frame:
 
 ```js
 import { renderAvatarSvg } from 'grok-bot-avatar-engine';
@@ -16,15 +16,16 @@ import { renderAvatarSvg } from 'grok-bot-avatar-engine';
 const svg = renderAvatarSvg({
   agentId: '33cf1aae-3a51-452d-b761-34a6ccb62201',
   state: 'idle',
-  time: 0,
   size: 120,
-  main: true,
 });
 ```
 
-That id is a cloud in brown. `main: true` adds the orange star and cuts a hole out of the body so the star sits in the silhouette. `time` is seconds from the start of the state.
+Omit `time` and you get the frame the client settles a resting avatar on. Give
+`time: 1.2` and the driver is stepped to that moment the way the play loop steps
+it. The id resolves through the client's own recipe, so the shape and the colour
+are the ones that bot has in the app.
 
-Mount a live avatar in the browser:
+Mount a live avatar:
 
 ```js
 import { createAvatar } from 'grok-bot-avatar-engine';
@@ -39,31 +40,58 @@ avatar.setState('finished');
 avatar.destroy();
 ```
 
-`createAvatar` needs `requestAnimationFrame`. In Node, use `renderAvatarSvg` and advance `time` yourself.
+`createAvatar` attaches the client's own component, so the frame cap, the
+`document.hidden` skip and the off-screen pause come with it. Omit `size` to let
+the element's box drive it. `renderAvatarSvg` works in Node with no DOM at all.
 
 From this repo:
 
 ```sh
-node examples/render-svg.mjs <agent-id> idle 0 > /tmp/bot.svg
+node examples/render-svg.mjs <agent-id> idle 1.2 > /tmp/bot.svg
+node examples/sheet.mjs
+node examples/showcase.mjs
 node examples/preview.mjs
 ```
 
-The preview serves `http://127.0.0.1:4174` and plays every shape. Open it over HTTP. A `file://` page cannot import the clip data.
+`examples/showcase.mjs` writes `examples/showcase.html`, a self-contained page
+with the engine inlined: the shape picker, the colour picker, the state list and
+the pointer gaze. `examples/preview.mjs` serves `http://127.0.0.1:4174` and
+imports `src/index.mjs` from your working tree, so it shows what you are
+editing. Open it over HTTP; a `file://` page cannot import the package modules.
 
 ## What you get
 
-| Piece | Behavior |
+| Piece | Where it comes from |
 |---|---|
-| Identity | FNV-1a over the agent id string, then one of 8 shapes and one of 10 colors |
-| Outlines | Fitted SVG paths. 22 of them match the Grok Bot 0.70.2 outline builder |
-| Eyes | Dark capsules, a small white highlight, seats scaled from the 0.70.2 eye table |
-| Motion | 28 clips and the state list, including the 120 second blocked hold |
-| Star | Disc 16, cutout 2.7, on a 60 viewBox. Orange `#f59312`, white star, hairline `#1c1c1c` |
+| Bodies | The 26 names in the client's `ei` table, projected from their meshes |
+| Shapes | The 26 picker names in `ln`, with `i_` mapping blob, flower, heart and star |
+| Colour | The 11 entries in `nn`; the pumpkin pins `orange` and gets no colour row |
+| Eyes | Cut out, never painted: an SVG mask on the mesh path, spliced subpaths on the flat one |
+| States | The 53 keys of `lo` over 28 clips |
+| Motion | The client's driver `eo` and clip machine `go`, including the seeded shuffle |
+| Identity | `jn`, the gated resolver, so an explicit pumpkin survives |
+| Pumpkin | The client's own signed-distance field and stem mesh, resolved for every caller |
 
 ## What this is not
 
-The Grok Bot desktop client paints these bodies as a 3D mesh: revolution, loft, or extrusion, then a projected eye capsule. This library draws the front-view outline and plays the same clips in SVG. A still, front-facing character is the same silhouette. A hard yaw is a horizontal squeeze here, and a turn in the mesh there. Cloud volume and star thickness are flat.
+This is a port of the desktop client's renderer, not a re-creation of it. The
+declarations in `data/extracted/src/avatar-engine.js` are the app's own bytes,
+cut out of the bundle with their offsets recorded. The code in `src/` binds and
+drives that renderer; it does not draw anything itself.
 
-This package does not ship the desktop client's renderer, and it does not log in or call the network.
+Two things the older documentation promised are gone with the front-view
+approximation they came from. A hard yaw is now a real mesh turn, not a
+horizontal squeeze. And the orange main-bot star is not in the 0.78.1 renderer at
+all — `#f59312` is just the `yellow/0` token in the app's theme palette — so this
+package no longer offers a `main` option.
 
-It is an independent library by [铁柱AGI](https://x.com/cgnot996). It is not an xAI product, not a Cursor product, and not part of [Grok App](https://github.com/RongleCat/grok-app).
+The plate, ring, stack, status badge and initials that sit around the character
+are the client's own composition and are not ported yet; their symbols are
+recorded in `data/extracted/manifest.json`.
+
+This package does not log in, call the network, or read your Grok Bot install.
+Picture URLs are handled by the app above the renderer, so nothing here takes
+one.
+
+It is maintained by [铁柱AGI](https://x.com/cgnot996). It is not an xAI product,
+not a Cursor product, and not part of [Grok App](https://github.com/RongleCat/grok-app).

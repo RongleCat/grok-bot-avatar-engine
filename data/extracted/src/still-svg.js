@@ -1,0 +1,2 @@
+// renderer/assets/index.eager-platform-C2su3Zzb.js  offset 519561  length 441  sha1 55261ec220b3
+function bM({body:e,ink:t,size:r,fill:i=o,id:a=`grok-bot-still`,frame:l}){let u=yM(e,i),d=r*s(u),f=TM((d-r)/2),p=n(typeof t==`string`?t:gM),m=c(l??wM(e),p,d,a,{displaySize:r});return`<svg xmlns="http://www.w3.org/2000/svg" width="${r}" height="${r}" viewBox="${f} ${f} ${r} ${r}">${typeof t==`string`?``:`<style>svg{--grok-bot-still-ink:${t.light}}@media (prefers-color-scheme:dark){svg{--grok-bot-still-ink:${t.dark}}}</style>`}${m}</svg>`}
