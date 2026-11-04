@@ -24,7 +24,7 @@ features:
   - title: Eyes are holes
     details: Nothing paints an eye. The mesh path punches it through an SVG mask, the flat path splices it into the outline, and the page shows through either way.
   - title: The whole state table
-    details: The client's stateful driver and clip machine: 53 states over 28 clips, seeded shuffle, blinks, pointer gaze, and poses quantized the way the app quantizes them.
+    details: "The client's stateful driver and clip machine, 53 states over 28 clips, with seeded shuffle, blinks, pointer gaze, and poses quantized the way the app quantizes them."
 ---
 
 ## Community
